@@ -1,74 +1,49 @@
 {
   "items": [
     {
-      "name": "نام عضو اول",
-      "role": "مدیر باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "name": "امین شاهی",
+      "role": "مدیر باشگاه"
     },
     {
-      "name": "نام عضو دوم",
-      "role": "مدیر رویدادها",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "name": "آرمان حق شناس",
+      "role": "گرافیک دیزاینر",
+      "image": "/assets/img/IMG_20260828_165556.png",
+      "instagram": "https://www.instagram.com/armvnhs",
+      "telegram": "http://t.me/armvnhs"
     },
     {
-      "name": "نام عضو سوم",
+      "name": "بهار گندم کار",
       "role": "مدیر بازاریابی",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "image": "/assets/img/IMG_5455.png"
     },
     {
-      "name": "نام عضو چهارم",
+      "name": "آیدا طالبی",
       "role": "مدیر محتوا",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "image": "/assets/img/photo_2026-10-18_21-05-43.jpg"
     },
     {
       "name": "نام عضو پنجم",
-      "role": "عضو باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "role": "عضو باشگاه"
     },
     {
       "name": "نام عضو ششم",
-      "role": "عضو باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "role": "عضو باشگاه"
     },
     {
       "name": "نام عضو هفتم",
-      "role": "عضو باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "role": "عضو باشگاه"
     },
     {
       "name": "نام عضو هشتم",
-      "role": "عضو باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "role": "عضو باشگاه"
     },
     {
       "name": "نام عضو نهم",
-      "role": "عضو باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "role": "عضو باشگاه"
     },
     {
       "name": "نام عضو دهم",
-      "role": "عضو باشگاه",
-      "image": "",
-      "instagram": "",
-      "telegram": ""
+      "role": "عضو باشگاه"
     }
   ]
 }
