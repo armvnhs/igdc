@@ -1,5 +1,11 @@
 {
   "title": "حامیان باشگاه",
   "description": "همراهانی که مسیر رشد و تجربه‌های تازه را با ما می‌سازند.",
-  "items": []
+  "items": [
+    {
+      "name": "چاپ حافظ",
+      "logo": "/assets/img/images.png",
+      "url": "https://hafez-print.org/"
+    }
+  ]
 }
