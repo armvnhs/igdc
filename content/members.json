@@ -2,14 +2,15 @@
   "items": [
     {
       "name": "امین شاهی",
-      "role": "مدیر باشگاه"
+      "role": "مدیر باشگاه",
+      "image": "/assets/img/photo_2025-01-12_22-43-17.jpg"
     },
     {
       "name": "آرمان حق شناس",
       "role": "گرافیک دیزاینر",
       "image": "/assets/img/IMG_20260828_165556.png",
       "instagram": "https://www.instagram.com/armvnhs",
-      "telegram": "http://t.me/armvnhs"
+      "telegram": "https://t.me/armvnhs"
     },
     {
       "name": "بهار گندم کار",
