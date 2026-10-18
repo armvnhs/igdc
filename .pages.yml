@@ -10,178 +10,205 @@ media:
 content:
   -
     name: "site"
-    label: "تنظیمات و متن‌های سایت"
+    label: "Site settings"
     type: "file"
     path: "content/site.json"
     format: "json"
     fields:
       -
         name: "siteName"
-        label: "نام باشگاه"
+        label: "Club name"
         type: "string"
         required: true
       -
         name: "siteSubtitle"
-        label: "زیرعنوان لوگو"
+        label: "Brand subtitle"
         type: "string"
       -
         name: "logo"
-        label: "لوگو"
+        label: "Logo"
         type: "image"
       -
         name: "heroTitle"
-        label: "عنوان اصلی"
+        label: "Hero title"
         type: "string"
         required: true
       -
         name: "heroDescription"
-        label: "توضیح اصلی"
+        label: "Hero description"
         type: "text"
       -
         name: "aboutTitle"
-        label: "عنوان دربارهٔ ما"
+        label: "About heading"
         type: "text"
       -
         name: "aboutDescription"
-        label: "توضیح دربارهٔ ما"
+        label: "About description"
         type: "text"
       -
-        name: "email"
-        label: "ایمیل ارتباطی"
+        name: "telegram"
+        label: "Telegram username"
         type: "string"
         required: true
+        description: "Public username only, for example igdc_ir. Used by contact links and message drafts."
       -
         name: "location"
-        label: "شهر و نشانی"
+        label: "Location"
         type: "string"
       -
         name: "contactTitle"
-        label: "عنوان ارتباط با ما (هر خط جدا)"
+        label: "Contact heading"
         type: "text"
+        description: "Use a new line for the second line of the heading."
       -
         name: "contactDescription"
-        label: "توضیح ارتباط با ما"
+        label: "Contact description"
         type: "text"
   -
     name: "gallery"
-    label: "گالری"
+    label: "Gallery"
     type: "file"
     path: "content/gallery.json"
     format: "json"
     fields:
       -
+        name: "images"
+        label: "Gallery images"
+        type: "image"
+        description: "Select or upload multiple photos here. Remove a photo here to remove it from the gallery. This list controls photo order."
+        options:
+          multiple: true
+          unique: true
+          rename: "safe"
+      -
         name: "items"
-        label: "گالری"
+        label: "Photo captions (optional)"
         type: "object"
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
         fields:
           -
-            name: "title"
-            label: "عنوان تصویر"
-            type: "string"
-            required: true
-          -
-            name: "date"
-            label: "تاریخ نمایشی"
-            type: "string"
-          -
             name: "image"
-            label: "تصویر"
+            label: "Photo"
             type: "image"
           -
-            name: "alt"
-            label: "توضیح تصویر برای دسترس‌پذیری"
+            name: "title"
+            label: "Caption"
             type: "string"
+          -
+            name: "date"
+            label: "Display date"
+            type: "string"
+          -
+            name: "alt"
+            label: "Accessible image description"
+            type: "string"
+        description: "Optional captions for photos already selected above. Match each entry to the same photo. Entries start collapsed."
   -
     name: "members"
-    label: "اعضا"
+    label: "Members"
     type: "file"
     path: "content/members.json"
     format: "json"
     fields:
       -
         name: "items"
-        label: "اعضا"
+        label: "Members"
         type: "object"
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.name} — {fields.role}"
         fields:
           -
             name: "name"
-            label: "نام و نام خانوادگی"
+            label: "Full name"
             type: "string"
             required: true
           -
             name: "role"
-            label: "مسئولیت یا تخصص"
+            label: "Role / specialty"
             type: "string"
           -
             name: "image"
-            label: "عکس عضو"
+            label: "Portrait"
             type: "image"
           -
             name: "instagram"
-            label: "آدرس کامل اینستاگرام"
+            label: "Instagram profile URL"
             type: "string"
           -
             name: "telegram"
-            label: "آدرس کامل تلگرام"
+            label: "Telegram profile URL"
             type: "string"
+        description: "The homepage shows the first 10 members in a horizontal row. The Members page shows everyone."
   -
     name: "events"
-    label: "رویدادها"
+    label: "Events"
     type: "file"
     path: "content/events.json"
     format: "json"
     fields:
       -
         name: "items"
-        label: "رویدادها"
+        label: "Events"
         type: "object"
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
         fields:
           -
             name: "id"
-            label: "شناسهٔ انگلیسی یکتا (برای لینک ثبت‌نام)"
+            label: "Unique event ID"
             type: "string"
             required: true
           -
             name: "title"
-            label: "عنوان رویداد"
+            label: "Event title"
             type: "string"
             required: true
           -
+            name: "image"
+            label: "Cover image"
+            type: "image"
+          -
             name: "category"
-            label: "نوع رویداد"
+            label: "Category"
             type: "string"
           -
             name: "day"
-            label: "روز"
+            label: "Day"
             type: "string"
           -
             name: "month"
-            label: "ماه"
+            label: "Month"
             type: "string"
           -
             name: "year"
-            label: "سال"
+            label: "Year"
             type: "string"
           -
             name: "time"
-            label: "ساعت"
+            label: "Time"
             type: "string"
           -
             name: "location"
-            label: "محل برگزاری"
+            label: "Location"
             type: "string"
           -
             name: "description"
-            label: "توضیح"
+            label: "Description"
             type: "text"
           -
-            name: "image"
-            label: "تصویر رویداد"
-            type: "image"
-          -
             name: "registration"
-            label: "نمایش لینک درخواست ثبت‌نام"
+            label: "Registration open"
             type: "boolean"
+          -
+            name: "registrationUrl"
+            label: "Registration URL"
+            type: "string"
+            description: "Full https:// URL to the event registration page. The registration button appears only when registration is open and this URL is valid."
+        description: "The first 4 events appear on the homepage. Put newer events first."
