@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "name": "نام عضو اول",
+      "role": "مدیر باشگاه",
+      "image": "",
+      "instagram": "",
+      "telegram": ""
+    },
+    {
+      "name": "نام عضو دوم",
+      "role": "مدیر رویدادها",
+      "image": "",
+      "instagram": "",
+      "telegram": ""
+    },
+    {
+      "name": "نام عضو سوم",
+      "role": "مدیر بازاریابی",
+      "image": "",
+      "instagram": "",
+      "telegram": ""
+    },
+    {
+      "name": "نام عضو چهارم",
+      "role": "مدیر محتوا",
+      "image": "",
+      "instagram": "",
+      "telegram": ""
+    }
+  ]
+}

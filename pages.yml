@@ -1,0 +1,187 @@
+media:
+  input: "assets/img"
+  output: "/assets/img"
+  extensions:
+    - "png"
+    - "jpg"
+    - "jpeg"
+    - "webp"
+    - "avif"
+content:
+  -
+    name: "site"
+    label: "تنظیمات و متن‌های سایت"
+    type: "file"
+    path: "content/site.json"
+    format: "json"
+    fields:
+      -
+        name: "siteName"
+        label: "نام باشگاه"
+        type: "string"
+        required: true
+      -
+        name: "siteSubtitle"
+        label: "زیرعنوان لوگو"
+        type: "string"
+      -
+        name: "logo"
+        label: "لوگو"
+        type: "image"
+      -
+        name: "heroTitle"
+        label: "عنوان اصلی"
+        type: "string"
+        required: true
+      -
+        name: "heroDescription"
+        label: "توضیح اصلی"
+        type: "text"
+      -
+        name: "aboutTitle"
+        label: "عنوان دربارهٔ ما"
+        type: "text"
+      -
+        name: "aboutDescription"
+        label: "توضیح دربارهٔ ما"
+        type: "text"
+      -
+        name: "email"
+        label: "ایمیل ارتباطی"
+        type: "string"
+        required: true
+      -
+        name: "location"
+        label: "شهر و نشانی"
+        type: "string"
+      -
+        name: "contactTitle"
+        label: "عنوان ارتباط با ما (هر خط جدا)"
+        type: "text"
+      -
+        name: "contactDescription"
+        label: "توضیح ارتباط با ما"
+        type: "text"
+  -
+    name: "gallery"
+    label: "گالری"
+    type: "file"
+    path: "content/gallery.json"
+    format: "json"
+    fields:
+      -
+        name: "items"
+        label: "گالری"
+        type: "object"
+        list: true
+        fields:
+          -
+            name: "title"
+            label: "عنوان تصویر"
+            type: "string"
+            required: true
+          -
+            name: "date"
+            label: "تاریخ نمایشی"
+            type: "string"
+          -
+            name: "image"
+            label: "تصویر"
+            type: "image"
+          -
+            name: "alt"
+            label: "توضیح تصویر برای دسترس‌پذیری"
+            type: "string"
+  -
+    name: "members"
+    label: "اعضا"
+    type: "file"
+    path: "content/members.json"
+    format: "json"
+    fields:
+      -
+        name: "items"
+        label: "اعضا"
+        type: "object"
+        list: true
+        fields:
+          -
+            name: "name"
+            label: "نام و نام خانوادگی"
+            type: "string"
+            required: true
+          -
+            name: "role"
+            label: "مسئولیت یا تخصص"
+            type: "string"
+          -
+            name: "image"
+            label: "عکس عضو"
+            type: "image"
+          -
+            name: "instagram"
+            label: "آدرس کامل اینستاگرام"
+            type: "string"
+          -
+            name: "telegram"
+            label: "آدرس کامل تلگرام"
+            type: "string"
+  -
+    name: "events"
+    label: "رویدادها"
+    type: "file"
+    path: "content/events.json"
+    format: "json"
+    fields:
+      -
+        name: "items"
+        label: "رویدادها"
+        type: "object"
+        list: true
+        fields:
+          -
+            name: "id"
+            label: "شناسهٔ انگلیسی یکتا (برای لینک ثبت‌نام)"
+            type: "string"
+            required: true
+          -
+            name: "title"
+            label: "عنوان رویداد"
+            type: "string"
+            required: true
+          -
+            name: "category"
+            label: "نوع رویداد"
+            type: "string"
+          -
+            name: "day"
+            label: "روز"
+            type: "string"
+          -
+            name: "month"
+            label: "ماه"
+            type: "string"
+          -
+            name: "year"
+            label: "سال"
+            type: "string"
+          -
+            name: "time"
+            label: "ساعت"
+            type: "string"
+          -
+            name: "location"
+            label: "محل برگزاری"
+            type: "string"
+          -
+            name: "description"
+            label: "توضیح"
+            type: "text"
+          -
+            name: "image"
+            label: "تصویر رویداد"
+            type: "image"
+          -
+            name: "registration"
+            label: "نمایش لینک درخواست ثبت‌نام"
+            type: "boolean"

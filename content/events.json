@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": "branding",
+      "title": "هویت بصری، از بریف تا ارائه",
+      "category": "ورکشاپ",
+      "day": "۲۸",
+      "month": "آبان",
+      "year": "۱۴۰۵",
+      "time": "۱۰ تا ۱۷",
+      "location": "اصفهان",
+      "description": "طراحی یک هویت کامل در یک روز، با نقد حضوری و بازخورد مستقیم",
+      "image": "",
+      "registration": true
+    },
+    {
+      "id": "poster",
+      "title": "نمایشگاه پوستر",
+      "category": "نمایشگاه",
+      "day": "۱۲",
+      "month": "آذر",
+      "year": "۱۴۰۵",
+      "time": "۱۶ تا ۲۱",
+      "location": "اصفهان",
+      "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
+      "image": "",
+      "registration": false
+    },
+    {
+      "id": "portfolio",
+      "title": "شب پورتفولیو",
+      "category": "دورهمی",
+      "day": "۲۶",
+      "month": "آذر",
+      "year": "۱۴۰۵",
+      "time": "۱۸ تا ۲۱",
+      "location": "اصفهان",
+      "description": "پورتفولیو بیاورید، بازخورد مستقیم بگیرید و با بقیهٔ اعضا آشنا شوید",
+      "image": "",
+      "registration": false
+    }
+  ]
+}
