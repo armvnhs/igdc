@@ -1,0 +1,44 @@
+{
+  "eyebrow": "در ارتباط بمانیم",
+  "title": "ایده‌های خوب، از یک گفت‌وگو شروع می‌شوند.",
+  "description": "برای همکاری، ساختن و تجربه‌کردن کنار هم هستیم.",
+  "actionLabel": "شروع گفت‌وگو",
+  "actionUrl": "https://t.me/igdc_ir",
+  "brand": "باشگاه طراحان گرافیک اصفهان",
+  "tagline": "شبکه توسعه و راهبری فرایند هنر و دیزاین",
+  "linksTitle": "در باشگاه",
+  "socialTitle": "ما را دنبال کنید",
+  "copyright": "© ۱۴۰۵ IGDC — باشگاه طراحان گرافیک اصفهان",
+  "links": [
+    {
+      "label": "رویدادها",
+      "url": "index.html#events"
+    },
+    {
+      "label": "گالری",
+      "url": "gallery.html"
+    },
+    {
+      "label": "اعضا",
+      "url": "members.html"
+    },
+    {
+      "label": "دربارهٔ باشگاه",
+      "url": "index.html#about"
+    }
+  ],
+  "socialLinks": [
+    {
+      "label": "کانال تلگرام",
+      "url": "https://t.me/igdcir"
+    },
+    {
+      "label": "گفت‌وگو در تلگرام",
+      "url": "https://t.me/igdc_ir"
+    },
+    {
+      "label": "اینستاگرام",
+      "url": "https://www.instagram.com/igdc.ir/"
+    }
+  ]
+}
