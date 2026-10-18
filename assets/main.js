@@ -13,7 +13,7 @@ function par(){tick=0;if(!word||!stage)return;var t=stage.getBoundingClientRect(
 if(word&&!reduce){addEventListener('scroll',function(){if(!tick)tick=requestAnimationFrame(par)},{passive:true});par()}
 
 var form=document.getElementById('cf'),fst=document.getElementById('fstat');
-if(form){form.addEventListener('submit',function(e){e.preventDefault();if(!form.checkValidity()){form.reportValidity();return}var data=new FormData(form);var subject='باشگاه طراحان گرافیک اصفهان — '+data.get('subject');var body='نام: '+data.get('name')+'\nایمیل: '+data.get('email')+'\n\n'+data.get('message');fst.textContent='پیش‌نویس در برنامهٔ ایمیل شما باز می‌شود؛ ارسال را همان‌جا تکمیل کنید.';window.location.href='mailto:'+(form.dataset.recipient||'hello@igdc.ir')+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)})}
+if(form){form.addEventListener('submit',function(e){e.preventDefault();if(!form.checkValidity()){form.reportValidity();return}var data=new FormData(form);var digits=String(data.get('phone')||'').replace(/[۰-۹]/g,function(c){return String(c.charCodeAt(0)-1776)}).replace(/[٠-٩]/g,function(c){return String(c.charCodeAt(0)-1632)}).replace(/[\s()-]/g,'');if(!/^\+?[0-9]{8,15}$/.test(digits)){fst.textContent='شماره موبایل را کامل وارد کنید.';document.getElementById('fphone').focus();return}var handle=form.dataset.telegram||'igdc_ir';if(!/^[A-Za-z0-9_]{5,32}$/.test(handle))handle='igdc_ir';var body='موضوع: '+data.get('subject')+'\nنام: '+data.get('name')+'\nشماره: '+digits+'\nاینستاگرام: '+data.get('instagram')+'\n\n'+data.get('message');fst.textContent='پیام در تلگرام آماده می‌شود؛ ارسال نهایی را همان‌جا انجام دهید.';window.location.href='https://t.me/'+handle+'?text='+encodeURIComponent(body)})}
 
 var lb=document.getElementById('lb'),lbi=document.getElementById('lbimg');
 var lastTile=null;
@@ -34,3 +34,5 @@ els.forEach(function(e){o.observe(e)});
 var sp=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var k='#'+e.target.id;for(var x in mp){if(x.charAt(0)!=='#')continue;var on=x===k;mp[x].classList.toggle('on',on);if(on)mp[x].setAttribute('aria-current','page');else mp[x].removeAttribute('aria-current')}}})},{rootMargin:'-45% 0px -50% 0px'});
 secs.forEach(function(s){sp.observe(s)});
 }else{els.forEach(function(e){e.classList.add('on')})}
+
+var rail=document.querySelector('.members-strip');if(rail)rail.addEventListener('keydown',function(e){if(e.target!==rail)return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();rail.scrollBy({left:e.key==='ArrowLeft'?-250:250,behavior:reduce?'auto':'smooth'})}});

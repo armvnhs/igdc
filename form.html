@@ -3,190 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ثبت‌نام در رویداد | باشگاه طراحان گرافیک اصفهان</title>
-<meta name="description" content="ثبت‌نام آنلاین در ورکشاپ‌ها و رویدادهای باشگاه طراحان گرافیک اصفهان.">
+<title>ثبت‌نام رویدادها | IGDC</title>
+<meta name="description" content="ثبت‌نام رویدادهای باشگاه طراحان گرافیک اصفهان">
+<meta property="og:type" content="website">
+<meta property="og:title" content="باشگاه طراحان گرافیک اصفهان | IGDC">
+<meta property="og:description" content="ورکشاپ، نمایشگاه و دورهمی برای جامعهٔ طراحی اصفهان. ثبت‌نام آنلاین رویدادها.">
 
 
 
 
-<style>
-:root{--bg:#fff;--bg2:#f5f5f7;--ink:#1d1d1f;--mute:#6e6e73;--line:#d2d2d7;--accent:#ff6a00;--accent-ink:#b83c05;--nav:rgba(255,255,255,.72);--sh:0 30px 60px -44px rgba(15,15,20,.4);color-scheme:light}
-*{box-sizing:border-box;margin:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{font-family:'Ravi','Ravi',system-ui,sans-serif;background:var(--bg2);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .35s,color .35s}
-svg.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1060px;margin-inline:auto;padding-inline:clamp(20px,4vw,32px)}
-.narrow{max-width:640px}
-
-header{position:sticky;top:0;z-index:50;background:var(--nav);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:border-color .3s}
-header.sc{border-bottom-color:color-mix(in srgb,var(--line) 55%,transparent)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:52px}
-.logo{display:flex;align-items:center;gap:7px;font:600 1.05rem 'Ravi';letter-spacing:-.01em;text-decoration:none}
-.logo i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-.back{font-size:.8rem;color:var(--mute);text-decoration:none;transition:color .2s;margin-inline-start:auto;margin-inline-end:12px}
-.back:hover{color:var(--ink)}
-.th{width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:var(--mute);display:grid;place-items:center;cursor:pointer;transition:.2s}
-.th:hover{color:var(--ink);background:var(--bg)}
-
-main{padding:clamp(30px,6vw,60px) 0 clamp(48px,8vw,80px)}
-.phead{text-align:center;margin-bottom:24px}
-.eyebrow{display:block;font-size:.79rem;font-weight:600;color:var(--accent-ink);margin-bottom:8px}
-h1{font-size:clamp(1.9rem,4.8vw,2.85rem);line-height:1.12;letter-spacing:-.03em;font-weight:700}
-.sub{color:var(--mute);font-size:clamp(.95rem,1.6vw,1.05rem);margin-top:10px;line-height:1.65}
-
-.evbox{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--bg);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);border-radius:18px;padding:15px 18px;margin-bottom:16px}
-.evbox .tag{display:inline-block;font-size:.7rem;font-weight:600;color:var(--accent-ink);margin-bottom:2px}
-.evbox .nm{display:block;font-size:1rem;font-weight:600;letter-spacing:-.01em}
-.evbox .em{display:block;font-size:.79rem;color:var(--mute);margin-top:2px}
-.evbox .cc{font-size:.72rem;color:var(--mute);white-space:nowrap}
-
-.card{background:var(--bg);border-radius:24px;padding:clamp(20px,4vw,30px);display:grid;gap:16px;border:1px solid color-mix(in srgb,var(--line) 35%,transparent);box-shadow:var(--sh);animation:up .6s cubic-bezier(.22,.61,.36,1) both}
-.card[hidden]{display:none}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-
-.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fld{display:grid;gap:0}
-.fld label,.fld legend{display:block;font-size:.76rem;color:var(--mute);margin-bottom:6px;font-weight:500}
-fieldset.fld{border:0;padding:0;min-width:0}
-.fld input,.fld select,.fld textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid transparent;background:var(--bg2);color:var(--ink);font:inherit;font-size:.92rem;outline:none;transition:border-color .2s,background .2s,box-shadow .2s}
-.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);background:var(--bg);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 12%,transparent)}
-.fld textarea{min-height:96px;resize:vertical}
-.fld input::placeholder,.fld textarea::placeholder{color:color-mix(in srgb,var(--mute) 75%,transparent)}
-.fld select{cursor:pointer}
-.locked{padding:12px 14px;border-radius:12px;background:var(--bg2);border:1px solid color-mix(in srgb,var(--line) 45%,transparent);font-size:.9rem;color:var(--ink)}
-.hint{font-size:.7rem;color:var(--mute);margin-top:5px}
-
-.pills{display:flex;gap:8px;flex-wrap:wrap}
-.pill{position:relative}
-.pill input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
-.pill span{display:block;padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-size:.84rem;color:var(--mute);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.pill input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.pill input:focus-visible+span{outline:2px solid var(--accent-ink);outline-offset:2px}
-
-.check{display:flex;align-items:flex-start;gap:10px;font-size:.83rem;color:var(--mute);line-height:1.6;cursor:pointer}
-.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex:none;cursor:pointer}
-.check a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 45%,transparent)}
-.check a:hover{border-color:var(--accent)}
-
-.btn{display:inline-block;width:100%;padding:14px;border:0;border-radius:13px;background:var(--ink);color:var(--bg);font:600 .95rem 'Ravi','Ravi';text-align:center;text-decoration:none;cursor:pointer;transition:opacity .2s,transform .2s}
-.btn:hover{opacity:.88;transform:translateY(-1px)}
-.note{font-size:.72rem;color:var(--mute);text-align:center}
-
-.done{text-align:center;justify-items:center;gap:8px;padding-block:30px}
-.done .ok{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 13%,transparent);color:var(--accent-ink);margin-bottom:6px}
-.done .ok .i{width:28px;height:28px;stroke-width:2.1}
-.done h2{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
-.done .dk{font-size:.9rem;color:var(--mute)}
-.done .dk b{font-family:'Ravi';color:var(--ink);letter-spacing:.04em}
-.done .dsub{font-size:.84rem;color:var(--mute);max-width:36ch;line-height:1.7}
-.done .btn{max-width:260px;margin-top:10px}
-
-footer{border-top:1px solid color-mix(in srgb,var(--line) 55%,transparent);padding:18px 0;color:var(--mute);font-size:.73rem;text-align:center}
-
-@media(max-width:560px){.row{grid-template-columns:1fr}.evbox{align-items:flex-start;flex-direction:column;gap:8px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style>
+<link rel="stylesheet" href="assets/main.css">
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="preload" href="assets/fonts/Ravi-VF.ttf" as="font" type="font/ttf" crossorigin>
 </head>
 <body>
+<a class="skip" href="#main">پرش به محتوا</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-<symbol id="sun" viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M4 11h16"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"/><path d="M3 7l9 6l9 -6"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></symbol>
 <symbol id="moon" viewBox="0 0 24 24"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"/></symbol>
-<symbol id="check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"/></symbol>
+<symbol id="ig" viewBox="0 0 24 24"><path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"/><path d="M9 12a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M16.5 7.5v.01"/></symbol>
+<symbol id="tg" viewBox="0 0 24 24"><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 7v5l3 3"/></symbol>
+<symbol id="users" viewBox="0 0 24 24"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></symbol>
+<symbol id="pal" viewBox="0 0 24 24"><path d="M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25"/><path d="M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></symbol>
+<symbol id="bulb" viewBox="0 0 24 24"><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/><path d="M9.7 17l4.6 0"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="M15 6l-6 6l6 6"/></symbol>
 </defs></svg>
 
 <header id="hdr">
-<div class="wrap bar">
-<a class="logo" href="index.html" aria-label="باشگاه طراحان گرافیک اصفهان — خانه"><img class="brand-mark" src="assets/img/Logo.png" alt="" width="30" height="46"><span class="brand-wordmark"><b>باشگاه طراحان گرافیک</b><small>اصفهان <span lang="en" dir="ltr">/ IGDC</span></small></span></a>
-<a class="back" href="index.html">بازگشت به سایت</a>
+<div class="wrap">
+<div class="bar">
+<a class="logo" href="index.html#home" aria-label="باشگاه طراحان گرافیک اصفهان — خانه"><img class="brand-mark" src="assets/img/Logo.png" alt="" width="30" height="46"><span class="brand-wordmark"><b>باشگاه طراحان گرافیک</b><small>اصفهان <span lang="en" dir="ltr">/ IGDC</span></small></span></a>
+<!-- لینک‌های ناوبری: هر وقت لینک‌های نهایی را دادی، فقط href همین‌ها را عوض کن -->
+<nav id="menu" aria-label="ناوبری اصلی">
+<a href="index.html#events">رویدادها</a>
+<a href="gallery.html">گالری</a>
+<a href="members.html">اعضا</a>
+<a href="index.html#about">درباره</a>
+<a href="index.html#contact">تماس</a>
+</nav>
+<div class="acts">
+<a class="cta" href="index.html#events">ثبت‌نام</a>
 
+<button class="burger" id="mb" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="menu"><span></span></button>
+</div>
+</div>
 </div>
 </header>
 
-<main>
-<div class="wrap narrow">
-<div class="phead">
-<span class="eyebrow">ثبت‌نام در رویداد</span>
-<h1>جایت را رزرو کن</h1>
-<p class="sub">فرم را پر کنید تا درخواست شما برای باشگاه آماده شود. تأیید ثبت‌نام پس از هماهنگی با تیم باشگاه انجام می‌شود.</p>
+<main id="main" class="collection"><section id="events"><div class="wrap"><div class="shead"><a class="back-link" href="index.html">بازگشت به خانه</a><h1>ثبت‌نام رویدادها</h1><p class="sub2">از کارت هر رویداد وارد صفحهٔ ثبت‌نام آن شوید.</p></div><div class="events"><p class="empty-state">در حال دریافت رویدادها…</p></div><noscript><p>برای نمایش رویدادها جاوااسکریپت را فعال کنید.</p><a href="https://t.me/igdc_ir">ارتباط با باشگاه در تلگرام</a></noscript></div></section></main>
+
+<footer>
+<div class="wrap">
+<div class="fgrid">
+<div class="fbrand">
+<a class="logo" href="index.html#home" aria-label="باشگاه طراحان گرافیک اصفهان — خانه"><img class="brand-mark" src="assets/img/Logo.png" alt="" width="30" height="46"><span class="brand-wordmark"><b>باشگاه طراحان گرافیک</b><small>اصفهان <span lang="en" dir="ltr">/ IGDC</span></small></span></a>
+<p>جامعه‌ای مستقل برای طراحان اصفهان؛ رویداد، آموزش و همکاری با برندها</p>
+</div>
+<div class="fcol"><h4>باشگاه</h4><a href="index.html#events">رویدادها</a><a href="gallery.html">گالری</a><a href="members.html">اعضای تیم</a><a href="index.html#events">ثبت‌نام رویداد</a></div>
+<div class="fcol"><h4>ارتباط</h4><a href="https://t.me/igdc_ir" data-telegram-link dir="ltr"><span data-telegram-handle>@igdc_ir</span></a><span class="footer-location" data-cms-location>اصفهان، ایران</span><a href="index.html#contact">فرم تماس</a></div>
+</div>
+<div class="fbot"><span>© ۱۴۰۵ باشگاه طراحان گرافیک اصفهان</span><span>ساخته‌شده در اصفهان</span></div>
+</div>
+</footer>
+
+<div class="lb" id="lb" hidden>
+<button class="lb-x" id="lbx" type="button" aria-label="بستن">×</button>
+<img id="lbimg" alt="">
 </div>
 
-<div class="evbox" aria-live="polite">
-<div>
-<span class="tag" id="evtag">ورکشاپ</span>
-<b class="nm" id="evname">هویت بصری، از بریف تا ارائه</b>
-<span class="em" id="evmeta">۲۸ آبان ۱۴۰۵ · ۱۰ تا ۱۷ · اصفهان</span>
-</div>
-<span class="cc">تأیید ظرفیت با تیم باشگاه</span>
-</div>
-
-<form class="card" id="rf" action="#" method="post">
-<div class="row">
-<div class="fld"><label for="fname">نام و نام خانوادگی</label><input id="fname" name="name" type="text" required autocomplete="name" placeholder="مثلاً نیلوفر احمدی"></div>
-<div class="fld"><label for="fphone">شماره موبایل</label><input id="fphone" name="phone" type="tel" required inputmode="numeric" pattern="09[0-9]{9}" dir="ltr" autocomplete="tel" placeholder="09131234567" title="شماره موبایل ۱۱ رقمی، مثلاً 09131234567"><span class="hint">با ۰۹ شروع شود</span></div>
-</div>
-
-<div class="fld"><label for="femail">ایمیل</label><input id="femail" name="email" type="email" required dir="ltr" autocomplete="email" placeholder="you@example.com"></div>
-
-<div class="fld"><label for="fjob">تخصص</label>
-<select id="fjob" name="field">
-<option value="graphic">گرافیک</option>
-<option value="type">تایپوگرافی و حروف</option>
-<option value="illustration">تصویرسازی</option>
-<option value="motion">موشن و دیجیتال</option>
-<option value="other">سایر</option>
-</select>
-</div>
-
-<fieldset class="fld">
-<legend>سطح تجربه</legend>
-<div class="pills">
-<label class="pill"><input type="radio" name="level" value="beginner" checked><span>مبتدی</span></label>
-<label class="pill"><input type="radio" name="level" value="mid"><span>متوسط</span></label>
-<label class="pill"><input type="radio" name="level" value="pro"><span>حرفه‌ای</span></label>
-</div>
-</fieldset>
-
-<div class="fld"><label for="fevent">رویداد</label><input id="fevent" name="event" type="hidden" value="branding"><div class="locked" id="evlocked">هویت بصری، از بریف تا ارائه — ۲۸ آبان</div></div>
-
-<div class="fld"><label for="fnote">توضیحات (اختیاری)</label><textarea id="fnote" name="note" placeholder="اگر سؤال یا نیاز خاصی داری اینجا بنویس"></textarea></div>
-
-<label class="check"><input type="checkbox" id="fterms" name="terms" required><span>قوانین و شرایط باشگاه را خوانده‌ام و می‌پذیرم</span></label>
-
-<button class="btn" type="submit">آماده‌کردن درخواست ثبت‌نام</button>
-<p class="note">درخواست در برنامهٔ ایمیل شما باز می‌شود؛ ارسال را همان‌جا تکمیل کنید.</p>
-</form>
-
-<div class="card done" id="done" hidden>
-<div class="ok"><svg class="i"><use href="#check"/></svg></div>
-<h2 id="donetitle" tabindex="-1">ثبت‌نام ثبت شد</h2>
-<p class="dk">کد پیگیری: <b id="code">—</b></p>
-<p class="dsub" id="donetxt"></p>
-<a class="btn" href="index.html">بازگشت به سایت</a>
-</div>
-</div>
-</main>
-
-<footer>© ۱۴۰۵ باشگاه طراحان گرافیک اصفهان · <a href="index.html" style="text-decoration:none">IGDC</a></footer>
-
-<script>
-var hd=document.getElementById('hdr'),mb=document.getElementById('mb');
-var sc=false;
-addEventListener('scroll',function(){var v=scrollY>8;if(v!==sc){sc=v;document.getElementById('hdr').classList.toggle('sc',v)}},{passive:true});
-
-var form=document.getElementById('rf');
-form.addEventListener('submit',function(e){
-e.preventDefault();if(!form.checkValidity()){form.reportValidity();return}
-var data=new FormData(form);var eventTitle=form.dataset.eventTitle||document.getElementById('evname').textContent;
-var body='درخواست ثبت‌نام در: '+eventTitle+'\nنام: '+data.get('name')+'\nموبایل: '+data.get('phone')+'\nایمیل: '+data.get('email')+'\nتخصص: '+data.get('field')+'\nسطح: '+data.get('level')+'\nتوضیحات: '+(data.get('note')||'—');
-window.location.href='mailto:'+(form.dataset.recipient||'hello@igdc.ir')+'?subject='+encodeURIComponent('درخواست ثبت‌نام — '+eventTitle)+'&body='+encodeURIComponent(body);
-});
-</script>
+<script src="assets/main.js" defer></script>
 <script src="assets/cms.js" defer></script>
 </body>
 </html>

@@ -11,7 +11,8 @@
       "location": "اصفهان",
       "description": "طراحی یک هویت کامل در یک روز، با نقد حضوری و بازخورد مستقیم",
       "image": "",
-      "registration": true
+      "registration": true,
+      "registrationUrl": ""
     },
     {
       "id": "poster",
@@ -24,7 +25,8 @@
       "location": "اصفهان",
       "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
       "image": "",
-      "registration": false
+      "registration": false,
+      "registrationUrl": ""
     },
     {
       "id": "portfolio",
@@ -37,7 +39,8 @@
       "location": "اصفهان",
       "description": "پورتفولیو بیاورید، بازخورد مستقیم بگیرید و با بقیهٔ اعضا آشنا شوید",
       "image": "",
-      "registration": false
+      "registration": false,
+      "registrationUrl": ""
     }
   ]
 }

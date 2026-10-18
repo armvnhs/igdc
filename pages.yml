@@ -1,0 +1,214 @@
+media:
+  input: "assets/img"
+  output: "/assets/img"
+  extensions:
+    - "png"
+    - "jpg"
+    - "jpeg"
+    - "webp"
+    - "avif"
+content:
+  -
+    name: "site"
+    label: "Site settings"
+    type: "file"
+    path: "content/site.json"
+    format: "json"
+    fields:
+      -
+        name: "siteName"
+        label: "Club name"
+        type: "string"
+        required: true
+      -
+        name: "siteSubtitle"
+        label: "Brand subtitle"
+        type: "string"
+      -
+        name: "logo"
+        label: "Logo"
+        type: "image"
+      -
+        name: "heroTitle"
+        label: "Hero title"
+        type: "string"
+        required: true
+      -
+        name: "heroDescription"
+        label: "Hero description"
+        type: "text"
+      -
+        name: "aboutTitle"
+        label: "About heading"
+        type: "text"
+      -
+        name: "aboutDescription"
+        label: "About description"
+        type: "text"
+      -
+        name: "telegram"
+        label: "Telegram username"
+        type: "string"
+        required: true
+        description: "Public username only, for example igdc_ir. Used by contact links and message drafts."
+      -
+        name: "location"
+        label: "Location"
+        type: "string"
+      -
+        name: "contactTitle"
+        label: "Contact heading"
+        type: "text"
+        description: "Use a new line for the second line of the heading."
+      -
+        name: "contactDescription"
+        label: "Contact description"
+        type: "text"
+  -
+    name: "gallery"
+    label: "Gallery"
+    type: "file"
+    path: "content/gallery.json"
+    format: "json"
+    fields:
+      -
+        name: "images"
+        label: "Gallery images"
+        type: "image"
+        description: "Select or upload multiple photos here. Remove a photo here to remove it from the gallery. This list controls photo order."
+        options:
+          multiple: true
+          unique: true
+          rename: "safe"
+      -
+        name: "items"
+        label: "Photo captions (optional)"
+        type: "object"
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
+        fields:
+          -
+            name: "image"
+            label: "Photo"
+            type: "image"
+          -
+            name: "title"
+            label: "Caption"
+            type: "string"
+          -
+            name: "date"
+            label: "Display date"
+            type: "string"
+          -
+            name: "alt"
+            label: "Accessible image description"
+            type: "string"
+        description: "Optional captions for photos already selected above. Match each entry to the same photo. Entries start collapsed."
+  -
+    name: "members"
+    label: "Members"
+    type: "file"
+    path: "content/members.json"
+    format: "json"
+    fields:
+      -
+        name: "items"
+        label: "Members"
+        type: "object"
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.name} — {fields.role}"
+        fields:
+          -
+            name: "name"
+            label: "Full name"
+            type: "string"
+            required: true
+          -
+            name: "role"
+            label: "Role / specialty"
+            type: "string"
+          -
+            name: "image"
+            label: "Portrait"
+            type: "image"
+          -
+            name: "instagram"
+            label: "Instagram profile URL"
+            type: "string"
+          -
+            name: "telegram"
+            label: "Telegram profile URL"
+            type: "string"
+        description: "The homepage shows the first 10 members in a horizontal row. The Members page shows everyone."
+  -
+    name: "events"
+    label: "Events"
+    type: "file"
+    path: "content/events.json"
+    format: "json"
+    fields:
+      -
+        name: "items"
+        label: "Events"
+        type: "object"
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
+        fields:
+          -
+            name: "id"
+            label: "Unique event ID"
+            type: "string"
+            required: true
+          -
+            name: "title"
+            label: "Event title"
+            type: "string"
+            required: true
+          -
+            name: "image"
+            label: "Cover image"
+            type: "image"
+          -
+            name: "category"
+            label: "Category"
+            type: "string"
+          -
+            name: "day"
+            label: "Day"
+            type: "string"
+          -
+            name: "month"
+            label: "Month"
+            type: "string"
+          -
+            name: "year"
+            label: "Year"
+            type: "string"
+          -
+            name: "time"
+            label: "Time"
+            type: "string"
+          -
+            name: "location"
+            label: "Location"
+            type: "string"
+          -
+            name: "description"
+            label: "Description"
+            type: "text"
+          -
+            name: "registration"
+            label: "Registration open"
+            type: "boolean"
+          -
+            name: "registrationUrl"
+            label: "Registration URL"
+            type: "string"
+            description: "Full https:// URL to the event registration page. The registration button appears only when registration is open and this URL is valid."
+        description: "The first 4 events appear on the homepage. Put newer events first."

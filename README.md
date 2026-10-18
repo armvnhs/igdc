@@ -1,42 +1,59 @@
-# IGDC — باشگاه طراحان گرافیک اصفهان
+# IGDC
 
-سایت استاتیک فارسی، راست‌به‌چپ و فقط روشن، با فونت متغیر محلی راوی.
+Persian, RTL, light-only static website with the local Ravi variable font.
 
-## مخزن و انتشار
+## Changes in this revision
 
-مخزن هدف: https://github.com/armvnhs/IGDC
+- index.html: horizontal member rail (up to 10), compact all-members link, phone and Instagram inputs, Telegram contact.
+- gallery.html and members.html: Telegram footer and event navigation.
+- form.html: legacy registration entry now lists event registration links.
+- assets/main.css and assets/site.css: Ravi-only typography, weights up to 550, four-column desktop events, filled diamond matching circle footprint, border-free About values, responsive member rail.
+- assets/main.js: Telegram drafts and keyboard scrolling.
+- assets/cms.js: member limit 10, event limit 4, external registration URLs, bulk gallery images and Telegram settings.
+- content/site.json: Telegram username replaces email.
+- content/events.json: registrationUrl added.
+- content/gallery.json: images list added; existing item details retained.
+- .pages.yml and pages.yml: English labels and helper text; named collapsed member/event records; bulk gallery selection.
+- Removed the unused Vazir.woff2 font. Ravi-VF.ttf is the only font referenced by the site.
 
-۱. فایل‌های این پوشه را در ریشهٔ شاخهٔ main قرار دهید؛ فایل .pages.yml، فایل .nojekyll، تمام HTMLها و پوشه‌های assets و content باید همراه هم بارگذاری شوند. محتوای ZIP را استخراج کنید؛ خود ZIP را به‌عنوان سایت بارگذاری نکنید.
-۲. در GitHub، به Settings → Pages بروید، Source را روی Deploy from a branch بگذارید، شاخهٔ main و پوشهٔ / (root) را انتخاب کنید.
-۳. سایت پس از استقرار در https://armvnhs.github.io/IGDC/ در دسترس خواهد بود.
+## Deploy
 
-## فعال‌کردن Pages CMS
+Repository: https://github.com/armvnhs/IGDC
 
-۱. وارد https://app.pagescms.org/ شوید و با حساب armvnhs به GitHub متصل شوید.
-۲. در صورت درخواست دسترسی GitHub، فقط مخزن IGDC را انتخاب کنید.
-۳. مخزن armvnhs/IGDC و شاخهٔ main را باز کنید. پنل تنظیمات را از فایل .pages.yml می‌خواند.
-۴. بخش‌های «تنظیمات و متن‌های سایت»، «گالری»، «اعضا» و «رویدادها» آمادهٔ ویرایش هستند. تغییرات را ذخیره کنید؛ پس از استقرار مجدد GitHub Pages، در سایت نمایش داده می‌شوند.
+Extract IGDC-ready.zip and upload the contents to the root of main. Include .pages.yml and .nojekyll with their leading dots. Upload the files and folders, not the ZIP. pages.yml is an identical convenience copy; Pages CMS reads .pages.yml.
 
-تنظیمات پنل در .pages.yml و محتوای سایت در فایل‌های JSON پوشهٔ content نگهداری می‌شود. کلید محرمانه یا توکن در سایت وجود ندارد. ورود به حساب و دادن دسترسی مخزن در خود Pages CMS انجام می‌شود؛ صرف وجود فایل تنظیمات به معنی اتصال حساب نیست.
+GitHub Settings → Pages: Deploy from a branch, main, / (root).
 
-## ویرایش محتوا
+Site: https://armvnhs.github.io/IGDC/
 
-- تصاویر را از بخش رسانهٔ پنل در assets/img بارگذاری کنید؛ سپس در هر رکورد انتخاب کنید. مسیرهای /assets/img به‌صورت خودکار با مسیر پروژهٔ GitHub Pages سازگار می‌شوند.
-- ترتیب لیست گالری و اعضا ترتیب نمایش در سایت است. خانه سه مورد اول را نشان می‌دهد و صفحه‌های gallery.html و members.html تمام موارد را نمایش می‌دهند.
-- در رویدادها، شناسهٔ انگلیسی باید یکتا باشد. گزینهٔ نمایش لینک درخواست ثبت‌نام را برای رویدادهای فعال روشن کنید.
-- نام باشگاه، لوگو، عنوان و توضیحات اصلی، دربارهٔ ما، ایمیل و متن ارتباط با ما از تنظیمات سایت قابل ویرایش‌اند.
-- گالری و اعضا فعلاً محتوای نمونه دارند؛ تصاویر و مشخصات واقعی را در پنل جایگزین کنید.
+## CMS
 
-## فرم‌ها
+Open https://app.pagescms.org/ and select armvnhs/IGDC, main. CMS labels and helper text are English; website content remains Persian.
 
-Pages CMS برای مدیریت محتوا است و صندوق پیام یا سامانهٔ ثبت‌نام ندارد. فرم تماس و درخواست ثبت‌نام یک ایمیل آماده در برنامهٔ ایمیل کاربر باز می‌کنند؛ کاربر ارسال را در آن برنامه تکمیل می‌کند. ایمیل مقصد از تنظیمات سایت خوانده می‌شود. ادعای ثبت موفق در سرور یا ارسال پیامک وجود ندارد.
+### Gallery
 
-## فایل‌ها و فونت
+Gallery → Gallery images lets you select/upload multiple photos in one control. Remove or reorder photos here. There are no real gallery photos locally yet; an empty gallery displays a message.
 
-صفحهٔ اصلی: index.html؛ گالری کامل: gallery.html؛ اعضای کامل: members.html؛ درخواست ثبت‌نام: form.html.
+Photo captions (optional) starts collapsed. Select the same photo and optionally add Caption, Display date and Accessible image description. A caption record alone does not add a photo. Removed photos do not reappear because their captions remain. Old JSON without an images key is still supported.
 
-فونت: assets/fonts/Ravi-VF.ttf با محور وزن ۱ تا ۹۵۰. لوگو: assets/img/Logo.png.
+### Members
 
-برای پیش‌نمایش کامل CMS، سایت را روی یک وب‌سرور محلی یا GitHub Pages باز کنید. بازکردن مستقیم فایل HTML با file:// به‌جای داده‌های JSON، محتوای جایگزین HTML را نشان می‌دهد.
+Records start collapsed and show the member name and role. The homepage shows up to 10 available members in a horizontal row. The full Members page shows everyone. There are 4 local member records; add the others in the CMS.
 
-مستندات رسمی تنظیمات پنل: https://pagescms.org/docs/configuration/
+### Events
+
+The homepage shows up to 4 available events. There are 3 local event records; no event/date was invented to fill the fourth place.
+
+Enable Registration open and enter a full HTTPS Registration URL to show the event button. Closed events and unsafe or missing links have no active registration button. Current URLs are blank; add the real event registration URLs in the CMS.
+
+### Contact
+
+Site settings → Telegram username defaults to igdc_ir. The form asks for name, phone, Instagram username, subject and message. It prepares a Telegram draft; the user completes sending in Telegram. There is no email, server submission or automatic message transmission.
+
+## Preview and validation
+
+Use a local static web server for content/*.json. Direct file:// viewing may show static HTML fallback because browser fetch restrictions prevent loading JSON.
+
+22 behavioral checks passed. Chrome checks covered desktop (1280px), mobile (390px), no horizontal page overflow, mobile menu, horizontal member navigation, Ravi font, matching hero shape footprints and border-free About values.
+
+CMS documentation: https://pagescms.org/docs/configuration/
