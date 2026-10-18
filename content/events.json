@@ -2,21 +2,22 @@
   "items": [
     {
       "id": "branding",
-      "title": "هویت بصری، از بریف تا ارائه",
+      "title": "دیزاین آزاد",
+      "image": "/assets/img/images.jpg",
       "category": "ورکشاپ",
       "day": "۲۸",
       "month": "آبان",
       "year": "۱۴۰۵",
       "time": "۱۰ تا ۱۷",
       "location": "اصفهان",
-      "description": "طراحی یک هویت کامل در یک روز، با نقد حضوری و بازخورد مستقیم",
-      "image": "",
+      "description": "نقد هویت بصری شما",
       "registration": true,
-      "registrationUrl": ""
+      "registrationUrl": "http://google.com/"
     },
     {
       "id": "poster",
       "title": "نمایشگاه پوستر",
+      "image": "/assets/img/images (1).jpg",
       "category": "نمایشگاه",
       "day": "۱۲",
       "month": "آذر",
@@ -24,23 +25,7 @@
       "time": "۱۶ تا ۲۱",
       "location": "اصفهان",
       "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
-      "image": "",
-      "registration": false,
-      "registrationUrl": ""
-    },
-    {
-      "id": "portfolio",
-      "title": "شب پورتفولیو",
-      "category": "دورهمی",
-      "day": "۲۶",
-      "month": "آذر",
-      "year": "۱۴۰۵",
-      "time": "۱۸ تا ۲۱",
-      "location": "اصفهان",
-      "description": "پورتفولیو بیاورید، بازخورد مستقیم بگیرید و با بقیهٔ اعضا آشنا شوید",
-      "image": "",
-      "registration": false,
-      "registrationUrl": ""
+      "registration": false
     }
   ]
 }
