@@ -1,20 +1,19 @@
 {
   "siteName": "باشگاه طراحان گرافیک اصفهان",
-  "siteSubtitle": "شبکه توسعه و راهبری فرایند هنر و دیزاین",
-  "logo": "assets/img/Logo.png",
   "heroTitle": "باشگاه طراحان گرافیک اصفهان",
   "heroDescription": "شبکه توسعه و راهبری فرایند هنر و دیزاین",
+  "logo": "/assets/img/Logo.png",
   "aboutTitle": "ما جامعه‌ای از طراحان و هنرمندان اصفهانی هستیم؛",
   "aboutDescription": "با رویدادهای منظم رشد کرده‌ایم و حالا برای همکاری با کسب‌وکارها آماده‌ایم",
+  "telegram": "igdc_ir",
   "location": "اصفهان، ایران",
   "contactTitle": "ارتباط با باشگاه",
   "contactDescription": "برای همکاری، عضویت یا برگزاری یک رویداد، برای ما بنویسید.",
-  "telegram": "igdc_ir",
   "telegramChannel": "https://t.me/igdcir",
+  "siteSubtitle": "شبکه توسعه و راهبری فرایند هنر و دیزاین",
+  "membershipIllustration": "/assets/img/Sleep.png",
   "instagramUrl": "https://www.instagram.com/igdc.ir/",
   "membershipOpen": false,
-  "membershipUrl": "",
-  "contactFormUrl": "",
   "stats": [
     {
       "value": "۱۲۰+",
@@ -28,6 +27,5 @@
       "value": "۱۵",
       "label": "پروژهٔ مشترک"
     }
-  ],
-  "membershipIllustration": ""
+  ]
 }
