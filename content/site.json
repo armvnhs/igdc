@@ -13,7 +13,8 @@
   "siteSubtitle": "شبکه توسعه و راهبری فرایند هنر و دیزاین",
   "membershipIllustration": "/assets/img/Sleep.png",
   "instagramUrl": "https://www.instagram.com/igdc.ir/",
-  "membershipOpen": false,
+  "membershipOpen": true,
+  "membershipUrl": "https://armvnhs.ir/igdc/index.html#events",
   "stats": [
     {
       "value": "۱۲۰+",
