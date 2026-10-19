@@ -1,18 +1,17 @@
 {
-  "images": [
-    "/assets/img/img669715.jpg",
-    "/assets/img/photo2026-10-1821-34-17.jpg",
-    "/assets/img/photo2026-10-1821-34-18.jpg",
-    "/assets/img/photo2026-10-1821-34-19-2.jpg",
-    "/assets/img/photo2026-10-1821-34-19.jpg"
-  ],
-  "items": [
+  "albums": [
     {
-      "image": "https://raw.githubusercontent.com/armvnhs/igdc/main/assets/img/photo2026-10-1821-34-19.jpg",
-      "title": "دیزاین آزاد",
-      "category": "دیزاین",
-      "date": "3 آبان"
-    },
-    {}
+      "title": "آرشیو تصاویر",
+      "date": "",
+      "description": "تصاویر رویدادها و فعالیت‌های باشگاه",
+      "cover": "",
+      "photos": [
+        "/assets/img/img669715.jpg",
+        "/assets/img/photo2026-10-1821-34-17.jpg",
+        "/assets/img/photo2026-10-1821-34-18.jpg",
+        "/assets/img/photo2026-10-1821-34-19-2.jpg",
+        "/assets/img/photo2026-10-1821-34-19.jpg"
+      ]
+    }
   ]
 }
