@@ -5,7 +5,12 @@
   var css = '.gx-open{display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;font:inherit}' +
     'figure.tile{margin:0}.album-card{scroll-margin-top:96px}' +
     '.gx-open:focus-visible,.gx-nav:focus-visible,.gx-jump a:focus-visible,.gx-cover:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}' +
-    '.gx-count{flex:none;padding:5px 14px;border:1px solid var(--line);border-radius:99px;font-size:12px;color:var(--mute);background:#fff}' +
+    '.album-card .album-photos{display:block;column-count:4;column-gap:14px;overflow:visible;padding:0}' +
+    '.album-card .album-photos .tile{display:block;break-inside:avoid;margin:0 0 14px;flex:none;width:100%;aspect-ratio:auto}' +
+    '.album-card .album-photos .shot{display:block;width:100%;height:auto;object-fit:cover}' +
+    '@media(max-width:1000px){.album-card .album-photos{column-count:3}}' +
+    '@media(max-width:700px){.album-card .album-photos{column-count:2;column-gap:10px}.album-card .album-photos .tile{margin-bottom:10px;border-radius:14px}}' +
+    '@media(max-width:340px){.album-card .album-photos{column-count:1}}' +
     '.gx-jump{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}' +
     '.gx-jump a{padding:8px 16px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--ink);background:#fff;transition:border-color .25s,color .25s}' +
     '.gx-jump a:hover{border-color:var(--accent);color:var(--accent-ink)}' +
@@ -65,8 +70,7 @@
     }).join('');
     return '<section class="album-card" id="album-' + a.n + '" aria-labelledby="album-t-' + a.n + '"><div class="album-head"><div><h2 id="album-t-' + a.n + '">' +
       esc(a.title) + '</h2>' + (a.description ? '<p>' + esc(a.description) + '</p>' : '') +
-      (a.date ? '<span class="album-date">' + esc(a.date) + '</span>' : '') + '</div><span class="gx-count">' + fa(a.photos.length) +
-      ' تصویر</span></div><div class="album-photos">' + tiles + '</div></section>';
+      '<span class="album-date">' + (a.date ? esc(a.date) + ' · ' : '') + fa(a.photos.length) + ' تصویر</span></div></div><div class="album-photos">' + tiles + '</div></section>';
   }
 
   function fullHtml(list) {
@@ -92,7 +96,8 @@
       if (!added) break;
       round++;
     }
-    return items.slice(0, max).map(function (it) {
+    var n = items.length >= 6 ? 6 : items.length >= 3 ? 3 : items.length;
+    return items.slice(0, n).map(function (it) {
       return '<a class="tile gx-cover" href="/gallery#album-' + it.a.n + '"><img class="shot" loading="lazy" decoding="async" src="' + esc(it.src) +
         '" alt="' + esc(it.a.title) + '"><span class="cap"><b>' + esc(it.a.title) + '</b><span>' + fa(it.a.photos.length) + ' تصویر</span></span></a>';
     }).join('');
