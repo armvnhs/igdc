@@ -1,12 +1,7 @@
 media:
   input: assets/img
   output: /assets/img
-  extensions:
-    - png
-    - jpg
-    - jpeg
-    - webp
-    - avif
+  extensions: [png, jpg, jpeg, webp, avif]
 content:
   - name: site
     label: Site settings
@@ -18,69 +13,50 @@ content:
         label: Club name
         type: string
         required: true
+      - name: siteSubtitle
+        label: Header subtitle
+        type: string
       - name: heroTitle
         label: Homepage title
         type: string
-        required: true
       - name: heroDescription
-        label: Club description
+        label: Homepage description
         type: text
-        required: true
       - name: logo
         label: Logo
         type: image
       - name: aboutTitle
-        label: About heading
+        label: About title
         type: text
       - name: aboutDescription
         label: About description
         type: text
       - name: telegram
-        label: Telegram username
+        label: Direct Telegram username
         type: string
-        required: true
-        description: Contact username, for example igdc_ir. This is separate from the public Telegram channel.
-      - name: location
-        label: Location
-        type: string
-      - name: contactTitle
-        label: Contact heading
-        type: text
-        description: Use a new line for the second line of the heading.
-      - name: contactDescription
-        label: Contact description
-        type: text
       - name: telegramChannel
         label: Telegram channel URL
         type: string
-        description: Public announcements channel, for example https://t.me/igdcir.
-      - name: siteSubtitle
-        label: Header subtitle
-        type: string
-      - name: membershipIllustration
-        label: Membership illustration
-        type: image
-        description: Optional transparent illustration for the membership dialog. Leave empty to reserve blank artwork space.
       - name: instagramUrl
-        label: Instagram profile URL
+        label: Instagram URL
         type: string
-        description: Full HTTPS URL. Instagram links stay hidden until a real profile URL is provided.
       - name: membershipOpen
         label: Membership is open
         type: boolean
       - name: membershipUrl
         label: Membership application URL
         type: string
-        description: Full HTTPS URL. Used only when Membership is open is enabled. Otherwise the header button displays the closed-membership dialog.
-      - name: contactFormUrl
-        label: Contact form endpoint
+      - name: membershipIllustration
+        label: Membership illustration
+        type: image
+      - name: fontFamily
+        label: Website font
         type: string
-        description: HTTPS form endpoint, e.g. https://formspree.io/f/YOUR_FORM_ID. Configure and verify the receiving email in the form service. Leave blank to keep submission unavailable.
+        description: Font family name loaded by the site. Keep Ravi unless another uploaded web font is configured in CSS.
       - name: stats
-        label: Club statistics
+        label: Statistics
         type: object
         list:
-          min: 0
           max: 3
           collapsible:
             collapsed: true
@@ -89,37 +65,50 @@ content:
           - name: value
             label: Value
             type: string
-            required: true
           - name: label
-            label: Description
+            label: Label
             type: string
-            required: true
   - name: banner
-    label: Featured banner
+    label: Hero slider
     type: file
     path: content/banner.json
     format: json
     fields:
       - name: enabled
-        label: Show featured banner
+        label: Enable slider
         type: boolean
-        description: When disabled or empty, the homepage shows the animated circle and diamond.
-      - name: image
-        label: Banner image
-        type: image
-      - name: title
-        label: Banner title
-        type: string
-      - name: description
-        label: Banner description
-        type: text
-      - name: url
-        label: Banner destination URL
-        type: string
-        description: HTTPS URL or a relative page path.
-      - name: buttonLabel
-        label: Link label
-        type: string
+      - name: autoplay
+        label: Auto play slides
+        type: boolean
+      - name: autoplaySeconds
+        label: Seconds per slide
+        type: number
+      - name: items
+        label: Slides
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{fields.title}'
+        fields:
+          - name: desktopImage
+            label: Desktop image
+            type: image
+          - name: mobileImage
+            label: Mobile image
+            type: image
+          - name: title
+            label: Slide title
+            type: string
+          - name: description
+            label: Slide description
+            type: text
+          - name: url
+            label: Button URL
+            type: string
+          - name: buttonLabel
+            label: Button label
+            type: string
   - name: gallery
     label: Gallery
     type: file
@@ -129,32 +118,30 @@ content:
       - name: images
         label: Gallery images
         type: image
-        description: Select or upload multiple photos here. Remove a photo here to remove it from the gallery. This list controls photo order.
-        options:
-          multiple: true
-          unique: true
-          rename: safe
+        list: true
       - name: items
-        label: Photo captions (optional)
+        label: Image details and categories
         type: object
         list:
           collapsible:
             collapsed: true
-            summary: '{fields.title}'
+            summary: '{fields.title} — {fields.category}'
         fields:
           - name: image
-            label: Photo
-            type: image
+            label: Image path
+            type: string
           - name: title
-            label: Caption
+            label: Title
+            type: string
+          - name: category
+            label: Event or topic category
             type: string
           - name: date
-            label: Display date
+            label: Date
             type: string
           - name: alt
-            label: Accessible image description
-            type: string
-        description: Optional captions for photos already selected above. Match each entry to the same photo. Entries start collapsed.
+            label: Accessible description
+            type: text
   - name: members
     label: Members
     type: file
@@ -170,22 +157,21 @@ content:
             summary: '{fields.name} — {fields.role}'
         fields:
           - name: name
-            label: Full name
+            label: Name
             type: string
             required: true
           - name: role
-            label: Role / specialty
+            label: Role
             type: string
           - name: image
             label: Portrait
             type: image
           - name: instagram
-            label: Instagram profile URL
+            label: Instagram URL
             type: string
           - name: telegram
-            label: Telegram profile URL
+            label: Telegram URL
             type: string
-        description: The homepage shows the first 10 members in a horizontal row. The Members page shows everyone.
   - name: events
     label: Events
     type: file
@@ -201,15 +187,14 @@ content:
             summary: '{fields.title}'
         fields:
           - name: id
-            label: Unique event ID
+            label: ID
             type: string
-            required: true
           - name: title
-            label: Event title
+            label: Title
             type: string
             required: true
           - name: image
-            label: Cover image
+            label: Poster image (3:4)
             type: image
           - name: category
             label: Category
@@ -232,15 +217,19 @@ content:
           - name: description
             label: Description
             type: text
+          - name: admission
+            label: Admission
+            type: select
+            options: [free, paid]
+          - name: price
+            label: Price
+            type: string
           - name: registration
             label: Registration open
             type: boolean
           - name: registrationUrl
             label: Registration URL
             type: string
-            description: Full https:// URL to the event registration page. The registration button appears only when registration is open and this URL is valid.
-        description: The first 2 events appear on the homepage. Registration open highlights the card; a valid Registration URL also enables its registration button.
-
   - name: footer
     label: Footer
     type: file
@@ -248,70 +237,59 @@ content:
     format: json
     fields:
       - name: eyebrow
-        label: Section label
+        label: Eyebrow
         type: string
       - name: title
-        label: Footer headline
+        label: Title
         type: text
       - name: description
-        label: Footer description
+        label: Description
         type: text
       - name: actionLabel
-        label: Button label
+        label: Action label
         type: string
       - name: actionUrl
-        label: Button destination URL
+        label: Action URL
         type: string
       - name: brand
-        label: Club name
+        label: Brand
         type: string
       - name: tagline
-        label: Club tagline
+        label: Tagline
         type: text
       - name: linksTitle
-        label: Navigation heading
+        label: Links heading
         type: string
       - name: socialTitle
-        label: Social links heading
+        label: Social heading
         type: string
       - name: copyright
-        label: Copyright text
+        label: Copyright
         type: string
       - name: links
         label: Navigation links
         type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{fields.label}'
+        list: true
         fields:
           - name: label
-            label: Link label
+            label: Label
             type: string
-            required: true
           - name: url
-            label: Destination URL
+            label: URL
             type: string
-            required: true
       - name: socialLinks
         label: Social links
         type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{fields.label}'
+        list: true
         fields:
           - name: label
-            label: Link label
+            label: Label
             type: string
-            required: true
           - name: url
-            label: Destination URL
+            label: URL
             type: string
-            required: true
-
   - name: sponsors
-    label: Club sponsors
+    label: Sponsors
     type: file
     path: content/sponsors.json
     format: json
@@ -325,19 +303,14 @@ content:
       - name: items
         label: Sponsors
         type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{fields.name}'
+        list: true
         fields:
           - name: name
-            label: Sponsor name
+            label: Name
             type: string
-            required: true
           - name: logo
-            label: Sponsor logo
+            label: Logo
             type: image
           - name: url
-            label: Sponsor website URL
+            label: Website URL
             type: string
-            description: Full HTTPS URL. Leave blank to display the sponsor without a link.
