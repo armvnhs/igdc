@@ -2,23 +2,34 @@
   var hosts = document.querySelectorAll('[data-gallery]');
   if (!hosts.length) return;
 
-  var css = '.gx-open{display:block;width:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;font:inherit}' +
-    'figure.tile{margin:0}.album-card{scroll-margin-top:96px}' +
-    '.gx-open:focus-visible,.gx-nav:focus-visible,.gx-jump a:focus-visible,.gx-cover:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}' +
-    '.album-card .album-photos{display:block;column-count:4;column-gap:14px;overflow:visible;padding:0}' +
-    '.album-card .album-photos .tile{display:block;break-inside:avoid;margin:0 0 14px;flex:none;width:100%;aspect-ratio:auto}' +
-    '.album-card .album-photos .shot{display:block;width:100%;height:auto;object-fit:cover}' +
-    '@media(max-width:1000px){.album-card .album-photos{column-count:3}}' +
-    '@media(max-width:700px){.album-card .album-photos{column-count:2;column-gap:10px}.album-card .album-photos .tile{margin-bottom:10px;border-radius:14px}}' +
-    '@media(max-width:340px){.album-card .album-photos{column-count:1}}' +
-    '.gx-jump{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}' +
-    '.gx-jump a{padding:8px 16px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--ink);background:#fff;transition:border-color .25s,color .25s}' +
-    '.gx-jump a:hover{border-color:var(--accent);color:var(--accent-ink)}' +
-    '.gx-cover{display:block}' +
-    '.lb .gx-nav{position:absolute;top:50%;translate:0 -50%;width:46px;height:46px;border:0;border-radius:50%;background:#ffffff25;color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s}' +
-    '.lb .gx-nav:hover{background:#ffffff45}.lb .gx-prev{right:16px}.lb .gx-next{left:16px}' +
-    '.lb .gx-pos{position:absolute;bottom:18px;left:50%;translate:-50% 0;color:#fff9;font-size:13px}' +
-    '.lb[data-single] .gx-nav,.lb[data-single] .gx-pos{display:none}';
+  var css = [
+    '.gx-open{display:block;width:100%;height:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;font:inherit}',
+    'figure.tile{margin:0}.album-card{scroll-margin-top:96px}',
+    '.gx-open:focus-visible,.gx-nav:focus-visible,.gx-jump a:focus-visible,.gx-card:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}',
+    '.gx-jump{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}',
+    '.gx-jump a{padding:8px 16px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--ink);background:#fff;transition:border-color .25s,color .25s}',
+    '.gx-jump a:hover{border-color:var(--accent);color:var(--accent-ink)}',
+    '.album-card .album-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch;overflow:visible;padding:0}',
+    '.album-card .album-photos .tile{aspect-ratio:1/1;margin:0;flex:none;width:auto;min-height:0;background:#f1f1f4;border-radius:18px}',
+    '.album-card .album-photos .tile.gx-lead{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}',
+    '.album-card .album-photos .shot{display:block;width:100%;height:100%;object-fit:cover}',
+    '.album-card .album-photos .tile:hover .shot{transform:scale(1.04)}',
+    '@media(max-width:900px){.album-card .album-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.album-card .album-photos .tile.gx-lead{grid-column:span 2;grid-row:auto;aspect-ratio:16/10;height:auto}.album-card .album-photos .tile{border-radius:14px}}',
+    '.gx-card{display:block;position:relative;color:#fff;text-decoration:none}',
+    '.gx-mos{position:absolute;inset:0;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:3px;background:#fff}',
+    '.gx-mos.one{grid-template-columns:1fr;grid-template-rows:1fr}',
+    '.gx-mos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.9,.3,1)}',
+    '.gx-mos img:first-child{grid-row:1/3}.gx-mos.one img:first-child{grid-row:auto}',
+    '.gx-card:hover .gx-mos img{transform:scale(1.04)}',
+    '.gx-card .cap{z-index:2;pointer-events:none}',
+    '.gx-card .cap b{font-size:15px}.gx-card .cap span{font-size:12px}',
+    '#gallery .gal{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}',
+    '@media(max-width:560px){#gallery .gal{display:flex}#gallery .gal .tile{flex:0 0 82%}}',
+    '.lb .gx-nav{position:absolute;top:50%;translate:0 -50%;width:46px;height:46px;border:0;border-radius:50%;background:#ffffff25;color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s}',
+    '.lb .gx-nav:hover{background:#ffffff45}.lb .gx-prev{right:16px}.lb .gx-next{left:16px}',
+    '.lb .gx-pos{position:absolute;bottom:18px;left:50%;translate:-50% 0;color:#fff9;font-size:13px}',
+    '.lb[data-single] .gx-nav,.lb[data-single] .gx-pos{display:none}'
+  ].join('');
   var st = document.createElement('style');
   st.textContent = css;
   document.head.appendChild(st);
@@ -50,20 +61,28 @@
     var list = (data && data.albums) || [];
     return list.map(function (a, i) {
       var title = String(a.title || '').trim() || 'رویداد ' + fa(i + 1);
-      var photos = (a.photos || []).map(function (p, j) {
+      var photos = (a.photos || []).map(function (p) {
         if (typeof p === 'string') p = { image: p };
         if (!p || !p.image) return null;
-        var alt = p.alt && p.alt !== 'تصویری از باشگاه' ? p.alt : title + ' — تصویر ' + fa(j + 1);
-        return { src: url(p.image), caption: p.caption || '', alt: alt };
+        return { src: url(p.image), caption: p.caption || '', alt: p.alt && p.alt !== 'تصویری از باشگاه' ? p.alt : '' };
       }).filter(Boolean);
-      var cover = url(a.cover) || (photos[0] && photos[0].src) || '';
-      return { n: i + 1, title: title, date: a.date || '', description: a.description || '', cover: cover, photos: photos };
+      var cover = url(a.cover);
+      if (cover && !photos.some(function (p) { return p.src === cover; })) {
+        photos.unshift({ src: cover, caption: '', alt: '' });
+      }
+      if (cover) {
+        var k = photos.findIndex(function (p) { return p.src === cover; });
+        if (k > 0) photos.unshift(photos.splice(k, 1)[0]);
+      }
+      photos.forEach(function (p, j) { if (!p.alt) p.alt = title + ' — تصویر ' + fa(j + 1); });
+      return { n: i + 1, title: title, date: a.date || '', description: a.description || '', photos: photos };
     }).filter(function (a) { return a.photos.length; });
   }
 
   function albumHtml(a) {
+    var lead = a.photos.length >= 5;
     var tiles = a.photos.map(function (p, j) {
-      return '<figure class="tile"><button class="gx-open" type="button" data-a="' + (a.n - 1) + '" data-p="' + j +
+      return '<figure class="tile' + (lead && j === 0 ? ' gx-lead' : '') + '"><button class="gx-open" type="button" data-a="' + (a.n - 1) + '" data-p="' + j +
         '" aria-label="نمایش بزرگ‌تر: ' + esc(p.alt) + '"><img class="shot" loading="lazy" decoding="async" src="' + esc(p.src) +
         '" alt="' + esc(p.alt) + '"></button>' +
         (p.caption ? '<figcaption class="cap"><b>' + esc(p.caption) + '</b></figcaption>' : '') + '</figure>';
@@ -80,27 +99,17 @@
     return jump + list.map(albumHtml).join('');
   }
 
+  function cardHtml(a) {
+    var pics = a.photos.slice(0, a.photos.length >= 3 ? 3 : 1);
+    var mos = '<span class="gx-mos' + (pics.length === 1 ? ' one' : '') + '">' + pics.map(function (p) {
+      return '<img loading="lazy" decoding="async" src="' + esc(p.src) + '" alt="">';
+    }).join('') + '</span>';
+    return '<a class="tile gx-card" href="/gallery#album-' + a.n + '" aria-label="' + esc(a.title) + ' — ' + fa(a.photos.length) + ' تصویر">' + mos +
+      '<span class="cap"><b>' + esc(a.title) + '</b><span>' + fa(a.photos.length) + ' تصویر</span></span></a>';
+  }
+
   function previewHtml(list) {
-    var items = list.map(function (a) { return { a: a, src: a.cover }; });
-    var round = 1;
-    var max = 6;
-    while (items.length < max) {
-      var added = false;
-      for (var i = 0; i < list.length && items.length < max; i++) {
-        var pool = list[i].photos.filter(function (p) { return p.src !== list[i].cover; });
-        if (pool[round - 1]) {
-          items.push({ a: list[i], src: pool[round - 1].src });
-          added = true;
-        }
-      }
-      if (!added) break;
-      round++;
-    }
-    var n = items.length >= 6 ? 6 : items.length >= 3 ? 3 : items.length;
-    return items.slice(0, n).map(function (it) {
-      return '<a class="tile gx-cover" href="/gallery#album-' + it.a.n + '"><img class="shot" loading="lazy" decoding="async" src="' + esc(it.src) +
-        '" alt="' + esc(it.a.title) + '"><span class="cap"><b>' + esc(it.a.title) + '</b><span>' + fa(it.a.photos.length) + ' تصویر</span></span></a>';
-    }).join('');
+    return list.slice(0, 6).map(cardHtml).join('');
   }
 
   var renders = 0;
@@ -208,10 +217,10 @@
           if (lb && albums[a]) open(a, +b.getAttribute('data-p'));
           return;
         }
-        if (e.target.closest('.gx-cover')) e.stopPropagation();
+        if (e.target.closest('.gx-card')) e.stopPropagation();
       });
       h.addEventListener('keydown', function (e) {
-        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gx-open,.gx-cover')) e.stopPropagation();
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gx-open,.gx-card')) e.stopPropagation();
       });
     });
   }
