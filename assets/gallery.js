@@ -110,6 +110,7 @@
     });
     renders++;
     setTimeout(function () { busy = false; }, 0);
+    document.dispatchEvent(new Event('igdc:content'));
     var id = location.hash.slice(1);
     if (id) {
       var el = document.getElementById(id);
