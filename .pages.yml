@@ -110,7 +110,7 @@ content:
             label: Button label
             type: string
   - name: gallery
-    label: Event albums
+    label: Gallery
     type: file
     path: content/gallery.json
     format: json
