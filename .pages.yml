@@ -110,38 +110,36 @@ content:
             label: Button label
             type: string
   - name: gallery
-    label: Gallery
+    label: Event albums
     type: file
     path: content/gallery.json
     format: json
     fields:
-      - name: images
-        label: Gallery images
-        type: image
-        list: true
-      - name: items
-        label: Image details and categories
+      - name: albums
+        label: Albums (one per event)
         type: object
         list:
           collapsible:
             collapsed: true
-            summary: '{fields.title} — {fields.category}'
+            summary: '{fields.title} — {fields.date}'
         fields:
-          - name: image
-            label: Image path
-            type: string
           - name: title
-            label: Title
+            label: Event name
             type: string
-          - name: category
-            label: Event or topic category
-            type: string
+            required: true
           - name: date
-            label: Date
+            label: Event date
             type: string
-          - name: alt
-            label: Accessible description
+          - name: description
+            label: Short description
             type: text
+          - name: cover
+            label: Cover photo
+            type: image
+          - name: photos
+            label: Photos of this event
+            type: image
+            list: true
   - name: members
     label: Members
     type: file
