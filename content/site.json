@@ -6,9 +6,6 @@
   "aboutTitle": "ما جامعه‌ای از طراحان و هنرمندان اصفهانی هستیم؛",
   "aboutDescription": "با رویدادهای منظم رشد کرده‌ایم و حالا برای همکاری با کسب‌وکارها آماده‌ایم",
   "telegram": "igdc_ir",
-  "location": "اصفهان، ایران",
-  "contactTitle": "ارتباط با باشگاه",
-  "contactDescription": "برای همکاری، عضویت یا برگزاری یک رویداد، برای ما بنویسید.",
   "telegramChannel": "https://t.me/igdcir",
   "siteSubtitle": "شبکه توسعه و راهبری فرایند هنر و دیزاین",
   "membershipIllustration": "/assets/img/Sleep.png",
@@ -27,5 +24,6 @@
       "value": "۱۵",
       "label": "پروژهٔ مشترک"
     }
-  ]
+  ],
+  "fontFamily": "Ravi"
 }

@@ -1,8 +1,15 @@
 {
   "enabled": false,
-  "image": "/assets/img/macbook-gradient-wallpaper-macos-windows-colorful-rainbow-dark-16-10-2024-1729104040-hd-wallpaper.jpg",
-  "title": "بیاید تست کنیم",
-  "description": "تست هست این",
-  "url": "https://armvnhs.ir/igdc/",
-  "buttonLabel": "بیشتر بدانید"
+  "autoplay": true,
+  "autoplaySeconds": 7,
+  "items": [
+    {
+      "desktopImage": "",
+      "mobileImage": "",
+      "title": "",
+      "description": "",
+      "url": "",
+      "buttonLabel": "بیشتر بدانید"
+    }
+  ]
 }

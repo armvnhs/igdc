@@ -91,3 +91,8 @@ Chrome checks: four pages at 320, 768 and 1280 pixels without horizontal page ov
 Behavior checks: home content limits, full events page, neutral portrait placeholders, banner replacement, membership activation, invalid URL rejection and contact endpoint enable/disable. Form success and failure paths were tested with mocked responses, including Persian phone normalization and preserving entered data after failure. No external form submission was sent.
 
 Live email delivery, Instagram links and event registration links await real configuration. The selected gallery has no photos, so actual gallery image content remains to be added.
+
+
+## Full audit update (2026-10-19)
+
+Mobile body text was increased; homepage and collection gallery rows use horizontal snap scrolling. Hero slider supports multiple CMS slides with separate desktop and mobile images, right-bottom copy, buttons, dots and configurable autoplay. Events use full 3:4 poster images on mobile and show free/paid admission. Gallery collection groups images by category. Sponsor marquee speed is reduced. Pages CMS was rebuilt around current fields only; contact endpoint and obsolete site fields were removed. Font family is configurable through Site settings and applies via the site font variable.

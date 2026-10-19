@@ -12,7 +12,9 @@
       "location": "اصفهان",
       "description": "نقد هویت بصری شما",
       "registration": true,
-      "registrationUrl": "https://armvnhs.ir/igdc/index.html#events"
+      "registrationUrl": "https://armvnhs.ir/igdc/index.html#events",
+      "admission": "free",
+      "price": ""
     },
     {
       "id": "poster",
@@ -25,7 +27,9 @@
       "time": "۱۶ تا ۲۱",
       "location": "اصفهان",
       "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
-      "registration": false
+      "registration": false,
+      "admission": "free",
+      "price": ""
     }
   ]
 }
