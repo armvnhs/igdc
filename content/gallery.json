@@ -1,17 +1,8 @@
 {
   "albums": [
     {
-      "title": "آرشیو تصاویر",
-      "date": "",
-      "description": "تصاویر رویدادها و فعالیت‌های باشگاه",
-      "cover": "",
-      "photos": [
-        "/assets/img/img669715.jpg",
-        "/assets/img/photo2026-10-1821-34-17.jpg",
-        "/assets/img/photo2026-10-1821-34-18.jpg",
-        "/assets/img/photo2026-10-1821-34-19-2.jpg",
-        "/assets/img/photo2026-10-1821-34-19.jpg"
-      ]
+      "title": "کمپ دیزاین",
+      "date": "Azar 1404"
     }
   ]
 }
