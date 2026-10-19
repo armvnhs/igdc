@@ -191,14 +191,28 @@
       x0 = null;
       if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
     });
-    document.addEventListener('click', function (e) {
-      var b = e.target.closest && e.target.closest('.gx-open');
-      if (!b) return;
-      open(+b.getAttribute('data-a'), +b.getAttribute('data-p'));
+  }
+
+  function bindHosts() {
+    hosts.forEach(function (h) {
+      h.addEventListener('click', function (e) {
+        var b = e.target.closest('.gx-open');
+        if (b) {
+          e.stopPropagation();
+          var a = +b.getAttribute('data-a');
+          if (lb && albums[a]) open(a, +b.getAttribute('data-p'));
+          return;
+        }
+        if (e.target.closest('.gx-cover')) e.stopPropagation();
+      });
+      h.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gx-open,.gx-cover')) e.stopPropagation();
+      });
     });
   }
 
   setupLightbox();
+  bindHosts();
 
   fetch('/content/gallery.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
