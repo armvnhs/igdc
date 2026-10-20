@@ -48,11 +48,11 @@ Responsive appearance checked at 320, 390, 768 and 1280 pixels.
 - Border-free About icons and a two-column desktop layout.
 - Membership button opens a closed-membership notice, or links to a configured application URL when enabled.
 - Contact form collects name, phone, optional Telegram username, topic and message. Submission is disabled until an endpoint is configured. No email service is activated yet.
-- English CMS labels; bulk gallery image selection and optional captions.
+- English CMS labels.
 
 ## Deploy
 
-Upload index.html, gallery.html, members.html, form.html, assets/, content/, .pages.yml and .nojekyll to the root of armvnhs/IGDC. Keep the leading dots. Upload extracted files, not the ZIP itself.
+Upload index.html, gallery.html, members.html, form.html, 404.html, robots.txt, sitemap.xml, assets/, content/, .pages.yml, CNAME and .nojekyll to the root of armvnhs/igdc. Keep the leading dots. Upload extracted files, not the ZIP itself.
 
 GitHub Pages settings: deploy from main, root directory. This revision is prepared locally; no remote upload or deployment was performed.
 
@@ -76,7 +76,11 @@ Enable Show banner, choose an image and/or enter a title, description, destinati
 
 ### Gallery
 
-Gallery images is the main multi-image list: upload/select, reorder or remove photos here. Photo captions (optional) provides a caption, display date and accessible description for the same photo. Captions do not re-add removed images. Older JSON using only items remains supported. There are currently no real gallery photos in the local content.
+Gallery is one list of albums, one album per event. Each album has Event name, Event date, Short description, Cover photo and Photos of this event (multi-image list). The cover is shown first inside the album. The homepage shows one card per event; each card links to its album on /gallery, where photos sit in a grid and open in a viewer with previous/next controls. Rendering is handled by assets/gallery.js; cms.js no longer touches the gallery.
+
+### Clean URLs
+
+Pages are served without .html: /gallery, /members, /form. Internal links and asset paths are root-relative, each page has a canonical tag, 404.html handles unknown addresses, and Cloudflare redirect rules send old .html addresses to the clean ones. Script URLs carry a ?v= number; raise it after changing a script so browsers and Cloudflare fetch the new file.
 
 ### Members and events
 

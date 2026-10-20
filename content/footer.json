@@ -12,19 +12,19 @@
   "links": [
     {
       "label": "رویدادها",
-      "url": "index.html#events"
+      "url": "/#events"
     },
     {
       "label": "گالری",
-      "url": "gallery.html"
+      "url": "/gallery"
     },
     {
       "label": "اعضا",
-      "url": "members.html"
+      "url": "/members"
     },
     {
       "label": "دربارهٔ باشگاه",
-      "url": "index.html#about"
+      "url": "/#about"
     }
   ],
   "socialLinks": [
