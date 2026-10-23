@@ -15,6 +15,12 @@
       "telegram": "https://t.me/armvnpv"
     },
     {
+      "name": "آیدا طالبی",
+      "role": "Marketing",
+      "image": "/assets/img/Members/آیدا-طالبی.webp",
+      "instagram": "https://www.instagram.com/aiidatalebi/"
+    },
+    {
       "name": "ابوالفضل کوهیان",
       "role": "Marketing",
       "image": "/assets/img/Members/ابوالفضل-کوهیان.webp",
@@ -121,12 +127,6 @@
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
-    },
-    {
-      "name": "آیدا طالبی",
-      "role": "Marketing",
-      "image": "/assets/img/Members/آیدا-طالبی.webp",
-      "instagram": "https://www.instagram.com/aiidatalebi/"
     }
   ]
 }
