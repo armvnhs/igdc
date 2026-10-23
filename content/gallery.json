@@ -21,7 +21,8 @@
         "/assets/img/Gallery/Camp-Design/Camo-Design (14).webp",
         "/assets/img/Gallery/Camp-Design/Camo-Design (15).webp",
         "/assets/img/Gallery/Camp-Design/Camo-Design (16).webp"
-      ]
+      ],
+      "id": "camp-design"
     },
     {
       "title": "رویداد پک دیزاین",
@@ -37,7 +38,8 @@
         "/assets/img/Gallery/Pack Design/Pack Design 08.jpg",
         "/assets/img/Gallery/Pack Design/Pack Design 09.jpg",
         "/assets/img/Gallery/Pack Design/Pack Design 10.jpg"
-      ]
+      ],
+      "id": "pack-design"
     }
   ]
 }
