@@ -1,6 +1,7 @@
 {
   "albums": [
     {
+      "id": "campdesign1",
       "title": "رویداد کمپ دیزاین",
       "date": "مهر ماه ۱۴۰۴",
       "description": "اولین کمپِ دیزاین با محوریت طراحی پوستر به روش چیدمان اشیا ( مدلسازی )",
@@ -21,10 +22,10 @@
         "/assets/img/Gallery/Camp-Design/Camo-Design (14).webp",
         "/assets/img/Gallery/Camp-Design/Camo-Design (15).webp",
         "/assets/img/Gallery/Camp-Design/Camo-Design (16).webp"
-      ],
-      "id": "camp-design"
+      ]
     },
     {
+      "id": "packdesign1",
       "title": "رویداد پک دیزاین",
       "date": "مرداد ۱۴۰۴",
       "description": "پک دیزاین ، سلسله نشست های تخصصی درباب چاپ و بسته بندی ",
@@ -38,8 +39,7 @@
         "/assets/img/Gallery/Pack Design/Pack Design 08.jpg",
         "/assets/img/Gallery/Pack Design/Pack Design 09.jpg",
         "/assets/img/Gallery/Pack Design/Pack Design 10.jpg"
-      ],
-      "id": "pack-design"
+      ]
     }
   ]
 }
