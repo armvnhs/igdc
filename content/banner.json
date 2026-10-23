@@ -1,23 +1,15 @@
 {
-  "enabled": false,
+  "enabled": true,
   "autoplay": true,
   "autoplaySeconds": 2,
   "items": [
     {
-      "desktopImage": "/assets/img/B on O-01.jpg",
-      "mobileImage": "/assets/img/b-on-w-01.jpg",
-      "title": "تست اسلایدر",
-      "description": "تستستست",
-      "url": "https://igdc.ir/",
-      "buttonLabel": "بیشتر بدانید"
-    },
-    {
-      "desktopImage": "/assets/img/photo2026-10-1821-34-19-2.jpg",
-      "mobileImage": "/assets/img/img669715.jpg",
-      "title": "تست 2 ",
-      "description": "سیشسیشس",
-      "url": "https://igdc.ir/",
-      "buttonLabel": "سلامتی"
+      "desktopImage": "/assets/img/Sliders/Ma-Hanooz-des.webp",
+      "mobileImage": "/assets/img/Sliders/Ma-Hanooz-mob.webp",
+      "title": "ما هوز، همو نمی‌شناسیم!",
+      "description": "فرایند شبکه سازی برای طراحان گرافیک اصفهان",
+      "url": "https://zaya.io/igdcisf",
+      "buttonLabel": "تکمیل پرسشنامه"
     }
   ]
 }
