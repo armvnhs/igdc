@@ -51,10 +51,10 @@
       return { id: id, legacy: index + 1, title: record.title.trim(), date: String(record.date || ''), description: String(record.description || ''), photos: photos };
     }).filter(function (a) { return a && a.photos.length; });
   }
-  function albumUrl(album) { return '/album.html?event=' + encodeURIComponent(album.id); }
+  function albumUrl(album) { return '/gallery?album=' + encodeURIComponent(album.id); }
   function meta(album) { return (album.date ? '<span>' + icon('calendar') + esc(album.date) + '</span>' : '') + '<span>' + icon('image') + fa(album.photos.length) + ' تصویر</span>'; }
   function cardHtml(album) {
-    return '<a class="gx-album-link" href="' + esc(albumUrl(album)) + '"><div class="gx-cover"><span class="gx-cover-placeholder">' + icon('folder') + '</span><img loading="lazy" decoding="async" src="' + esc(album.photos[0].src) + '" alt=""><span class="gx-cover-badge">' + icon('image') + fa(album.photos.length) + '</span></div><div class="gx-card-body"><h2>' + esc(album.title) + '</h2><div class="gx-meta">' + meta(album) + '</div><p>' + esc(album.description) + '</p><span class="gx-card-action">مشاهدهٔ آلبوم ' + icon('left') + '</span></div></a>';
+    return '<a class="gx-album-link" href="' + esc(albumUrl(album)) + '"><div class="gx-cover"><span class="gx-cover-placeholder">' + icon('image') + '</span><img loading="lazy" decoding="async" src="' + esc(album.photos[0].src) + '" alt=""></div><div class="gx-card-body"><h2>' + esc(album.title) + '</h2><div class="gx-meta">' + meta(album) + '</div>' + (album.description ? '<p>' + esc(album.description) + '</p>' : '') + '</div></a>';
   }
   function readPage(params, count, size) {
     var raw = Number(params.get('page')), total = Math.max(1, Math.ceil(count / size));
@@ -78,11 +78,11 @@
     var query = (params.get('q') || '').trim().slice(0, 160), term = fold(query);
     var matches = albums.filter(function (album) { return !term || fold(album.title + ' ' + album.date + ' ' + album.description).includes(term); });
     var state = readPage(params, matches.length, ALBUMS_PER_PAGE), start = (state.page - 1) * ALBUMS_PER_PAGE;
-    var toolbar = '<form class="gx-search" role="search"><label class="sr-only" for="gx-query">جست‌وجوی رویدادها</label><span class="gx-search-icon">' + icon('search') + '</span><input id="gx-query" name="q" type="search" value="' + esc(query) + '" maxlength="160" placeholder="نام رویداد یا تاریخ را جست‌وجو کنید"><button type="submit">جست‌وجو</button></form>';
-    return '<div class="gx-toolbar">' + toolbar + '<p class="gx-results" role="status">' + icon('folder') + fa(matches.length) + ' آلبوم' + (matches.length ? ' · صفحهٔ ' + fa(state.page) + ' از ' + fa(state.total) : '') + '</p></div>' + (matches.length ? '<div class="gx-album-grid">' + matches.slice(start, start + ALBUMS_PER_PAGE).map(cardHtml).join('') + '</div>' : empty('آلبومی پیدا نشد', query ? 'عبارت دیگری را جست‌وجو کنید.' : 'تصاویر رویدادهای تازه به‌زودی اینجا قرار می‌گیرند.')) + pagination(state);
+    var toolbar = '<form class="gx-search" role="search"><label class="sr-only" for="gx-query">جست‌وجوی رویدادها</label><span class="gx-search-icon">' + icon('search') + '</span><input id="gx-query" name="q" type="search" value="' + esc(query) + '" maxlength="160" placeholder="نام رویداد یا تاریخ را جست‌وجو کنید"><button class="sr-only" type="submit">جست‌وجو</button></form>';
+    return '<div class="gx-toolbar">' + toolbar + '<p class="gx-results" role="status">' + fa(matches.length) + ' آلبوم' + (state.total > 1 ? ' · صفحهٔ ' + fa(state.page) + ' از ' + fa(state.total) : '') + '</p></div>' + (matches.length ? '<div class="gx-album-grid">' + matches.slice(start, start + ALBUMS_PER_PAGE).map(cardHtml).join('') + '</div>' : empty('آلبومی پیدا نشد', query ? 'عبارت دیگری را جست‌وجو کنید.' : 'تصاویر رویدادهای تازه به‌زودی اینجا قرار می‌گیرند.')) + pagination(state);
   }
   function albumHtml(params) {
-    var id = params.get('event');
+    var id = params.get('album') || params.get('event');
     selected = albums.find(function (album) { return album.id === id; });
     var back = '<a class="gx-back" href="/gallery">' + icon('right') + 'همهٔ آلبوم‌ها</a>';
     if (!selected) { document.title = 'آلبوم پیدا نشد | IGDC'; return back + empty('آلبوم پیدا نشد', 'برای انتخاب رویداد به فهرست آلبوم‌ها برگردید.'); }
@@ -94,18 +94,22 @@
       var number = start + offset;
       return '<figure class="gx-photo"><button class="gx-photo-button" data-gx-photo="' + number + '" type="button" aria-label="نمایش بزرگ‌تر: ' + esc(photo.alt) + '"><span class="gx-photo-placeholder">' + icon('image') + '</span><img loading="lazy" decoding="async" src="' + esc(photo.src) + '" alt="' + esc(photo.alt) + '"><span class="gx-zoom">' + icon('zoom') + '</span></button>' + (photo.caption ? '<figcaption>' + esc(photo.caption) + '</figcaption>' : '') + '</figure>';
     }).join('');
-    return back + '<header class="gx-album-heading"><span class="eyebrow">' + icon('folder') + 'آلبوم رویداد</span><h1>' + esc(selected.title) + '</h1>' + (selected.description ? '<p>' + esc(selected.description) + '</p>' : '') + '<div class="gx-meta">' + meta(selected) + '</div></header><div class="gx-photo-summary" role="status">تصاویر ' + fa(start + 1) + ' تا ' + fa(Math.min(start + PHOTOS_PER_PAGE, selected.photos.length)) + ' از ' + fa(selected.photos.length) + '</div><div class="gx-photo-grid">' + photos + '</div>' + pagination(state);
+    return back + '<header class="gx-album-heading"><h1>' + esc(selected.title) + '</h1>' + (selected.description ? '<p>' + esc(selected.description) + '</p>' : '') + '<div class="gx-meta">' + meta(selected) + '</div></header><div class="gx-photo-summary" role="status">تصاویر ' + fa(start + 1) + ' تا ' + fa(Math.min(start + PHOTOS_PER_PAGE, selected.photos.length)) + ' از ' + fa(selected.photos.length) + '</div><div class="gx-photo-grid">' + photos + '</div>' + pagination(state);
   }
   function render() {
     var params = new URLSearchParams(location.search);
     hosts.forEach(function (host) {
       var mode = host.getAttribute('data-gallery');
-      host.innerHTML = mode === 'preview' ? (albums.length ? albums.slice(0, 3).map(cardHtml).join('') : empty('خاطره‌های بعدی، به‌زودی', 'تصاویر رویدادهای باشگاه اینجا منتشر می‌شوند.')) : mode === 'album' ? albumHtml(params) : archiveHtml(params);
+      var detail = mode === 'album' || (mode !== 'preview' && Boolean(params.get('album') || params.get('event')));
+      var heading = document.querySelector('[data-gallery-heading]');
+      if (heading) heading.hidden = detail;
+      if (mode !== 'preview' && !detail) { document.title = 'گالری باشگاه | IGDC'; var canonical = document.querySelector('link[rel="canonical"]'); if (canonical) canonical.href = 'https://igdc.ir/gallery'; }
+      host.innerHTML = mode === 'preview' ? (albums.length ? albums.slice(0, 3).map(cardHtml).join('') : empty('خاطره‌های بعدی، به‌زودی', 'تصاویر رویدادهای باشگاه اینجا منتشر می‌شوند.')) : detail ? albumHtml(params) : archiveHtml(params);
       host.removeAttribute('aria-busy');
     });
     document.dispatchEvent(new Event('igdc:content'));
   }
-  function navigate(value) { close(); history.pushState(null, '', value); render(); var host = document.querySelector('[data-gallery]:not([data-gallery="preview"])'); if (host) { host.scrollIntoView({ block: 'start' }); host.focus({ preventScroll: true }); } }
+  function navigate(value) { close(); history.pushState(null, '', value); render(); var host = document.querySelector('[data-gallery]:not([data-gallery="preview"])'); if (host) { host.scrollIntoView({ block: 'start' }); host.setAttribute('data-section-focus', ''); host.focus({ preventScroll: true }); } }
   function show() {
     var photo = selected.photos[photoIndex];
     image.src = photo.src; image.alt = photo.alt;
