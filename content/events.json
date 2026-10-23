@@ -11,10 +11,9 @@
       "time": "۱۰ تا ۱۷",
       "location": "اصفهان",
       "description": "نقد هویت بصری شما",
-      "registration": true,
-      "registrationUrl": "https://igdc.ir/#events",
       "admission": "free",
-      "price": ""
+      "registration": true,
+      "registrationUrl": "https://igdc.ir/#events"
     },
     {
       "id": "poster",
@@ -27,9 +26,9 @@
       "time": "۱۶ تا ۲۱",
       "location": "اصفهان",
       "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
-      "registration": false,
-      "admission": "free",
-      "price": ""
+      "admission": "paid",
+      "price": "120 هزار تومن",
+      "registration": true
     }
   ]
 }
