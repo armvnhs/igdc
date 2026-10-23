@@ -27,6 +27,12 @@
       "instagram": "https://www.instagram.com/bahar.gandomkar/"
     },
     {
+      "name": "ستایش راکی",
+      "role": "Marketing",
+      "image": "/assets/img/Members/ستایش-راکی.webp",
+      "instagram": "https://www.instagram.com/setayesh_rocky/"
+    },
+    {
       "name": "امیر سالار اسپیطالی",
       "role": "R&D",
       "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
@@ -69,10 +75,9 @@
       "instagram": "https://www.instagram.com/coolsarah._/"
     },
     {
-      "name": "ستایش راکی",
+      "name": "عاطفه زمانی",
       "role": "Marketing",
-      "image": "/assets/img/Members/ستایش-راکی.webp",
-      "instagram": "https://www.instagram.com/setayesh_rocky/"
+      "image": "/assets/img/Members/عاطفه-زمانی.webp"
     }
   ]
 }
