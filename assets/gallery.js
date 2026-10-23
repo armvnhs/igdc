@@ -1,240 +1,182 @@
 (function () {
+  'use strict';
   var hosts = document.querySelectorAll('[data-gallery]');
   if (!hosts.length) return;
-
-  var css = [
-    '.gx-open{display:block;width:100%;height:100%;padding:0;margin:0;border:0;background:none;cursor:zoom-in;font:inherit}',
-    'figure.tile{margin:0}.album-card{scroll-margin-top:96px}',
-    '.gx-open:focus-visible,.gx-nav:focus-visible,.gx-jump a:focus-visible,.gx-card:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}',
-    '.gx-jump{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}',
-    '.gx-jump a{padding:8px 16px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--ink);background:#fff;transition:border-color .25s,color .25s}',
-    '.gx-jump a:hover{border-color:var(--accent);color:var(--accent-ink)}',
-    '.album-card .album-photos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch;overflow:visible;padding:0}',
-    '.album-card .album-photos .tile{aspect-ratio:1/1;margin:0;flex:none;width:auto;min-height:0;background:#f1f1f4;border-radius:18px}',
-    '.album-card .album-photos .tile.gx-lead{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}',
-    '.album-card .album-photos .shot{display:block;width:100%;height:100%;object-fit:cover}',
-    '.album-card .album-photos .tile:hover .shot{transform:scale(1.04)}',
-    '@media(max-width:900px){.album-card .album-photos{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.album-card .album-photos .tile.gx-lead{grid-column:span 2;grid-row:auto;aspect-ratio:16/10;height:auto}.album-card .album-photos .tile{border-radius:14px}}',
-    '.gx-card{display:block;position:relative;color:#fff;text-decoration:none}',
-    '.gx-mos{position:absolute;inset:0;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:3px;background:#fff}',
-    '.gx-mos.one{grid-template-columns:1fr;grid-template-rows:1fr}',
-    '.gx-mos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.9,.3,1)}',
-    '.gx-mos img:first-child{grid-row:1/3}.gx-mos.one img:first-child{grid-row:auto}',
-    '.gx-card:hover .gx-mos img{transform:scale(1.04)}',
-    '.gx-card .cap{z-index:2;pointer-events:none}',
-    '.gx-card .cap b{font-size:15px}.gx-card .cap span{font-size:12px}',
-    '#gallery .gal{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}',
-    '@media(max-width:560px){#gallery .gal{display:flex}#gallery .gal .tile{flex:0 0 82%}}',
-    '.lb .gx-nav{position:absolute;top:50%;translate:0 -50%;width:46px;height:46px;border:0;border-radius:50%;background:#ffffff25;color:#fff;font-size:26px;line-height:1;cursor:pointer;transition:background .2s}',
-    '.lb .gx-nav:hover{background:#ffffff45}.lb .gx-prev{right:16px}.lb .gx-next{left:16px}',
-    '.lb .gx-pos{position:absolute;bottom:18px;left:50%;translate:-50% 0;color:#fff9;font-size:13px}',
-    '.lb[data-single] .gx-nav,.lb[data-single] .gx-pos{display:none}'
-  ].join('');
-  var st = document.createElement('style');
-  st.textContent = css;
-  document.head.appendChild(st);
-
-  var lb = document.getElementById('lb');
-  var lbi = document.getElementById('lbimg');
-  var lbx = document.getElementById('lbx');
-  var albums = [];
-  var set = [];
-  var idx = 0;
-  var lastFocus = null;
-  var pos = null;
-
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
+  var ALBUMS_PER_PAGE = 12, PHOTOS_PER_PAGE = 24;
+  var albums = [], selected = null, lastFocus = null, photoIndex = 0;
+  var lb = document.getElementById('lb'), image = document.getElementById('lbimg'), closeButton = document.getElementById('lbx');
+  var previous, next, position, caption;
+  var paths = {
+    folder: '<path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10H3z"/>',
+    image: '<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 16 5-5 4 4 4-5 5 6"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h2m4 0h2"/>',
+    search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>',
+    right: '<path d="m9 6 6 6-6 6M15 12H4"/>',
+    left: '<path d="m15 6-6 6 6 6M9 12h11"/>',
+    zoom: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4m-13-9h7m-3.5-3.5v7"/>',
+    close: '<path d="m6 6 12 12M6 18 18 6"/>'
+  };
+  function icon(name) { return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true">' + (paths[name] || paths.image) + '</svg>'; }
+  function esc(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function fa(value) { return String(value).replace(/\d/g, function (d) { return '۰۱۲۳۴۵۶۷۸۹'[d]; }); }
+  function media(value) {
+    if (typeof value !== 'string' || !value.trim() || value.includes('\\')) return '';
+    try {
+      var parsed = new URL(value.trim(), document.baseURI);
+      if (parsed.username || parsed.password || !['https:', 'http:'].includes(parsed.protocol)) return '';
+      if (parsed.origin !== location.origin && parsed.protocol !== 'https:') return '';
+      return parsed.origin === location.origin ? parsed.pathname + parsed.search : parsed.href;
+    } catch (error) { return ''; }
   }
-  function fa(n) {
-    return String(n).replace(/\d/g, function (d) { return '۰۱۲۳۴۵۶۷۸۹'.charAt(d); });
-  }
-  function url(s) {
-    s = String(s || '').trim();
-    if (!s) return '';
-    return /^(https?:)?\/\//.test(s) || s.charAt(0) === '/' ? s : '/' + s;
-  }
-
+  function slug(value) { return String(value || '').trim().toLowerCase().replace(/[^a-z0-9\u0600-\u06ff_-]+/g, '-').replace(/^-+|-+$/g, ''); }
   function normalize(data) {
-    var list = (data && data.albums) || [];
-    return list.map(function (a, i) {
-      var title = String(a.title || '').trim() || 'رویداد ' + fa(i + 1);
-      var photos = (a.photos || []).map(function (p) {
-        if (typeof p === 'string') p = { image: p };
-        if (!p || !p.image) return null;
-        return { src: url(p.image), caption: p.caption || '', alt: p.alt && p.alt !== 'تصویری از باشگاه' ? p.alt : '' };
-      }).filter(Boolean);
-      var cover = url(a.cover);
-      if (cover && !photos.some(function (p) { return p.src === cover; })) {
-        photos.unshift({ src: cover, caption: '', alt: '' });
+    if (!data || !Array.isArray(data.albums)) throw new Error('Invalid gallery data');
+    var ids = new Set();
+    return data.albums.map(function (record, index) {
+      if (!record || typeof record.title !== 'string' || !record.title.trim()) return null;
+      var id = slug(record.id) || slug(record.title) || 'event-' + (index + 1), base = id, duplicate = 2;
+      while (ids.has(id)) id = base + '-' + duplicate++;
+      ids.add(id);
+      var photos = [], seen = new Set();
+      function addPhoto(value) {
+        if (typeof value === 'string') value = { image: value };
+        if (!value) return;
+        var src = media(value.image);
+        if (!src || seen.has(src)) return;
+        seen.add(src);
+        photos.push({ src: src, caption: String(value.caption || ''), alt: String(value.alt || record.title + ' — تصویر ' + fa(photos.length + 1)) });
       }
-      if (cover) {
-        var k = photos.findIndex(function (p) { return p.src === cover; });
-        if (k > 0) photos.unshift(photos.splice(k, 1)[0]);
-      }
-      photos.forEach(function (p, j) { if (!p.alt) p.alt = title + ' — تصویر ' + fa(j + 1); });
-      return { n: i + 1, title: title, date: a.date || '', description: a.description || '', photos: photos };
-    }).filter(function (a) { return a.photos.length; });
+      addPhoto(record.cover);
+      if (Array.isArray(record.photos)) record.photos.forEach(addPhoto);
+      return { id: id, legacy: index + 1, title: record.title.trim(), date: String(record.date || ''), description: String(record.description || ''), photos: photos };
+    }).filter(function (a) { return a && a.photos.length; });
   }
-
-  function albumHtml(a) {
-    var lead = a.photos.length >= 5;
-    var tiles = a.photos.map(function (p, j) {
-      return '<figure class="tile' + (lead && j === 0 ? ' gx-lead' : '') + '"><button class="gx-open" type="button" data-a="' + (a.n - 1) + '" data-p="' + j +
-        '" aria-label="نمایش بزرگ‌تر: ' + esc(p.alt) + '"><img class="shot" loading="lazy" decoding="async" src="' + esc(p.src) +
-        '" alt="' + esc(p.alt) + '"></button>' +
-        (p.caption ? '<figcaption class="cap"><b>' + esc(p.caption) + '</b></figcaption>' : '') + '</figure>';
+  function albumUrl(album) { return '/album.html?event=' + encodeURIComponent(album.id); }
+  function meta(album) { return (album.date ? '<span>' + icon('calendar') + esc(album.date) + '</span>' : '') + '<span>' + icon('image') + fa(album.photos.length) + ' تصویر</span>'; }
+  function cardHtml(album) {
+    return '<a class="gx-album-link" href="' + esc(albumUrl(album)) + '"><div class="gx-cover"><span class="gx-cover-placeholder">' + icon('folder') + '</span><img loading="lazy" decoding="async" src="' + esc(album.photos[0].src) + '" alt=""><span class="gx-cover-badge">' + icon('image') + fa(album.photos.length) + '</span></div><div class="gx-card-body"><h2>' + esc(album.title) + '</h2><div class="gx-meta">' + meta(album) + '</div><p>' + esc(album.description) + '</p><span class="gx-card-action">مشاهدهٔ آلبوم ' + icon('left') + '</span></div></a>';
+  }
+  function readPage(params, count, size) {
+    var raw = Number(params.get('page')), total = Math.max(1, Math.ceil(count / size));
+    return { page: Number.isSafeInteger(raw) && raw > 0 ? Math.min(raw, total) : 1, total: total };
+  }
+  function fold(value) { return String(value).normalize('NFKC').replace(/ي/g, 'ی').replace(/ك/g, 'ک').replace(/[\u064b-\u065f\u200c]/g, '').toLowerCase(); }
+  function pageUrl(page) { var url = new URL(location.href); url.hash = ''; if (page > 1) url.searchParams.set('page', page); else url.searchParams.delete('page'); return url.pathname + url.search; }
+  function pagination(state) {
+    if (state.total < 2) return '';
+    function link(page, label, symbol) { return '<a class="gx-page-link" data-gx-page href="' + esc(pageUrl(page)) + '" aria-label="' + label + '">' + icon(symbol) + '<span>' + label + '</span></a>'; }
+    var numbers = [], html = '', last = 0;
+    for (var i = 1; i <= state.total; i++) if (i === 1 || i === state.total || Math.abs(i - state.page) <= 1) numbers.push(i);
+    numbers.forEach(function (i) {
+      if (i - last > 1) html += '<span class="gx-page-gap" aria-hidden="true">…</span>';
+      html += '<a class="gx-page-number" data-gx-page href="' + esc(pageUrl(i)) + '" aria-label="صفحهٔ ' + fa(i) + '"' + (i === state.page ? ' aria-current="page"' : '') + '>' + fa(i) + '</a>'; last = i;
+    });
+    return '<nav class="gx-pagination" aria-label="صفحه‌بندی گالری">' + (state.page > 1 ? link(state.page - 1, 'قبلی', 'right') : '<span></span>') + '<div class="gx-page-numbers">' + html + '</div>' + (state.page < state.total ? link(state.page + 1, 'بعدی', 'left') : '<span></span>') + '</nav>';
+  }
+  function empty(title, description) { return '<div class="gx-empty">' + icon('folder') + '<h2>' + esc(title) + '</h2><p>' + esc(description) + '</p></div>'; }
+  function archiveHtml(params) {
+    var query = (params.get('q') || '').trim().slice(0, 160), term = fold(query);
+    var matches = albums.filter(function (album) { return !term || fold(album.title + ' ' + album.date + ' ' + album.description).includes(term); });
+    var state = readPage(params, matches.length, ALBUMS_PER_PAGE), start = (state.page - 1) * ALBUMS_PER_PAGE;
+    var toolbar = '<form class="gx-search" role="search"><label class="sr-only" for="gx-query">جست‌وجوی رویدادها</label><span class="gx-search-icon">' + icon('search') + '</span><input id="gx-query" name="q" type="search" value="' + esc(query) + '" maxlength="160" placeholder="نام رویداد یا تاریخ را جست‌وجو کنید"><button type="submit">جست‌وجو</button></form>';
+    return '<div class="gx-toolbar">' + toolbar + '<p class="gx-results" role="status">' + icon('folder') + fa(matches.length) + ' آلبوم' + (matches.length ? ' · صفحهٔ ' + fa(state.page) + ' از ' + fa(state.total) : '') + '</p></div>' + (matches.length ? '<div class="gx-album-grid">' + matches.slice(start, start + ALBUMS_PER_PAGE).map(cardHtml).join('') + '</div>' : empty('آلبومی پیدا نشد', query ? 'عبارت دیگری را جست‌وجو کنید.' : 'تصاویر رویدادهای تازه به‌زودی اینجا قرار می‌گیرند.')) + pagination(state);
+  }
+  function albumHtml(params) {
+    var id = params.get('event');
+    selected = albums.find(function (album) { return album.id === id; });
+    var back = '<a class="gx-back" href="/gallery">' + icon('right') + 'همهٔ آلبوم‌ها</a>';
+    if (!selected) { document.title = 'آلبوم پیدا نشد | IGDC'; return back + empty('آلبوم پیدا نشد', 'برای انتخاب رویداد به فهرست آلبوم‌ها برگردید.'); }
+    document.title = selected.title + ' | گالری IGDC';
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = 'https://igdc.ir' + albumUrl(selected);
+    var state = readPage(params, selected.photos.length, PHOTOS_PER_PAGE), start = (state.page - 1) * PHOTOS_PER_PAGE;
+    var photos = selected.photos.slice(start, start + PHOTOS_PER_PAGE).map(function (photo, offset) {
+      var number = start + offset;
+      return '<figure class="gx-photo"><button class="gx-photo-button" data-gx-photo="' + number + '" type="button" aria-label="نمایش بزرگ‌تر: ' + esc(photo.alt) + '"><span class="gx-photo-placeholder">' + icon('image') + '</span><img loading="lazy" decoding="async" src="' + esc(photo.src) + '" alt="' + esc(photo.alt) + '"><span class="gx-zoom">' + icon('zoom') + '</span></button>' + (photo.caption ? '<figcaption>' + esc(photo.caption) + '</figcaption>' : '') + '</figure>';
     }).join('');
-    return '<section class="album-card" id="album-' + a.n + '" aria-labelledby="album-t-' + a.n + '"><div class="album-head"><div><h2 id="album-t-' + a.n + '">' +
-      esc(a.title) + '</h2>' + (a.description ? '<p>' + esc(a.description) + '</p>' : '') +
-      '<span class="album-date">' + (a.date ? esc(a.date) + ' · ' : '') + fa(a.photos.length) + ' تصویر</span></div></div><div class="album-photos">' + tiles + '</div></section>';
+    return back + '<header class="gx-album-heading"><span class="eyebrow">' + icon('folder') + 'آلبوم رویداد</span><h1>' + esc(selected.title) + '</h1>' + (selected.description ? '<p>' + esc(selected.description) + '</p>' : '') + '<div class="gx-meta">' + meta(selected) + '</div></header><div class="gx-photo-summary" role="status">تصاویر ' + fa(start + 1) + ' تا ' + fa(Math.min(start + PHOTOS_PER_PAGE, selected.photos.length)) + ' از ' + fa(selected.photos.length) + '</div><div class="gx-photo-grid">' + photos + '</div>' + pagination(state);
   }
-
-  function fullHtml(list) {
-    var jump = list.length > 1 ? '<nav class="gx-jump" aria-label="رویدادها">' + list.map(function (a) {
-      return '<a href="#album-' + a.n + '">' + esc(a.title) + '</a>';
-    }).join('') + '</nav>' : '';
-    return jump + list.map(albumHtml).join('');
-  }
-
-  function cardHtml(a) {
-    var pics = a.photos.slice(0, a.photos.length >= 3 ? 3 : 1);
-    var mos = '<span class="gx-mos' + (pics.length === 1 ? ' one' : '') + '">' + pics.map(function (p) {
-      return '<img loading="lazy" decoding="async" src="' + esc(p.src) + '" alt="">';
-    }).join('') + '</span>';
-    return '<a class="tile gx-card" href="/gallery#album-' + a.n + '" aria-label="' + esc(a.title) + ' — ' + fa(a.photos.length) + ' تصویر">' + mos +
-      '<span class="cap"><b>' + esc(a.title) + '</b><span>' + fa(a.photos.length) + ' تصویر</span></span></a>';
-  }
-
-  function previewHtml(list) {
-    return list.slice(0, 6).map(cardHtml).join('');
-  }
-
-  var renders = 0;
-  var busy = false;
-
   function render() {
-    busy = true;
-    hosts.forEach(function (h) {
-      var mode = h.getAttribute('data-gallery');
-      h.innerHTML = mode === 'preview' ? previewHtml(albums) : fullHtml(albums);
-      if (h.firstElementChild) h.firstElementChild.setAttribute('data-gx', '');
+    var params = new URLSearchParams(location.search);
+    hosts.forEach(function (host) {
+      var mode = host.getAttribute('data-gallery');
+      host.innerHTML = mode === 'preview' ? (albums.length ? albums.slice(0, 3).map(cardHtml).join('') : empty('خاطره‌های بعدی، به‌زودی', 'تصاویر رویدادهای باشگاه اینجا منتشر می‌شوند.')) : mode === 'album' ? albumHtml(params) : archiveHtml(params);
+      host.removeAttribute('aria-busy');
     });
-    renders++;
-    setTimeout(function () { busy = false; }, 0);
     document.dispatchEvent(new Event('igdc:content'));
-    var id = location.hash.slice(1);
-    if (id) {
-      var el = document.getElementById(id);
-      if (el) el.scrollIntoView();
-    }
   }
-
-  function guard() {
-    if (typeof MutationObserver === 'undefined') return;
-    hosts.forEach(function (h) {
-      new MutationObserver(function () {
-        if (busy || renders > 4) return;
-        if (!h.firstElementChild || !h.firstElementChild.hasAttribute('data-gx')) render();
-      }).observe(h, { childList: true });
-    });
-  }
-
+  function navigate(value) { close(); history.pushState(null, '', value); render(); var host = document.querySelector('[data-gallery]:not([data-gallery="preview"])'); if (host) { host.scrollIntoView({ block: 'start' }); host.focus({ preventScroll: true }); } }
   function show() {
-    var p = set[idx];
-    lbi.src = p.src;
-    lbi.alt = p.alt;
-    if (pos) pos.textContent = fa(idx + 1) + ' / ' + fa(set.length);
+    var photo = selected.photos[photoIndex];
+    image.src = photo.src; image.alt = photo.alt;
+    position.textContent = fa(photoIndex + 1) + ' از ' + fa(selected.photos.length);
+    caption.textContent = photo.caption;
+    previous.disabled = photoIndex === 0; next.disabled = photoIndex === selected.photos.length - 1;
   }
-  function open(ai, pi) {
-    set = albums[ai].photos;
-    idx = pi;
-    lastFocus = document.activeElement;
-    if (set.length < 2) lb.setAttribute('data-single', ''); else lb.removeAttribute('data-single');
-    show();
-    lb.hidden = false;
-    document.body.style.overflow = 'hidden';
-    lbx.focus();
+  function open(index) {
+    if (!selected || !selected.photos[index] || !lb) return;
+    lastFocus = document.activeElement; photoIndex = index; show(); lb.hidden = false; document.body.style.overflow = 'hidden'; closeButton.focus();
   }
   function close() {
-    lb.hidden = true;
-    lbi.removeAttribute('src');
-    document.body.style.overflow = '';
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    if (!lb || lb.hidden) return;
+    lb.hidden = true; image.removeAttribute('src'); document.body.style.overflow = '';
+    if (lastFocus && lastFocus.isConnected) lastFocus.focus();
   }
-  function step(d) {
-    if (set.length < 2) return;
-    idx = (idx + d + set.length) % set.length;
-    show();
-  }
-
+  function step(direction) { if (!selected) return; var index = photoIndex + direction; if (index >= 0 && index < selected.photos.length) { photoIndex = index; show(); } }
   function setupLightbox() {
-    if (!lb || !lbi || !lbx) return;
-    var prev = document.createElement('button');
-    prev.type = 'button';
-    prev.className = 'gx-nav gx-prev';
-    prev.setAttribute('aria-label', 'تصویر قبلی');
-    prev.textContent = '›';
-    var next = document.createElement('button');
-    next.type = 'button';
-    next.className = 'gx-nav gx-next';
-    next.setAttribute('aria-label', 'تصویر بعدی');
-    next.textContent = '‹';
-    pos = document.createElement('span');
-    pos.className = 'gx-pos';
-    lb.appendChild(prev);
-    lb.appendChild(next);
-    lb.appendChild(pos);
-    prev.addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
-    next.addEventListener('click', function (e) { e.stopPropagation(); step(1); });
-    lbx.addEventListener('click', close);
-    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
-    document.addEventListener('keydown', function (e) {
+    if (!lb || !image || !closeButton) return;
+    lb.classList.add('gx-lightbox'); lb.setAttribute('aria-label', 'نمایش تصاویر آلبوم');
+    closeButton.innerHTML = icon('close');
+    previous = document.createElement('button'); previous.className = 'gx-nav gx-prev'; previous.type = 'button'; previous.setAttribute('aria-label', 'تصویر قبلی'); previous.innerHTML = icon('right');
+    next = document.createElement('button'); next.className = 'gx-nav gx-next'; next.type = 'button'; next.setAttribute('aria-label', 'تصویر بعدی'); next.innerHTML = icon('left');
+    position = document.createElement('p'); position.className = 'gx-position'; position.setAttribute('role', 'status');
+    caption = document.createElement('p'); caption.className = 'gx-caption';
+    lb.append(previous, next, position, caption);
+    previous.addEventListener('click', function () { step(-1); }); next.addEventListener('click', function () { step(1); }); closeButton.addEventListener('click', close);
+    lb.addEventListener('click', function (event) { if (event.target === lb) close(); });
+    document.addEventListener('keydown', function (event) {
       if (lb.hidden) return;
-      if (e.key === 'Escape') close();
-      else if (e.key === 'ArrowLeft') step(1);
-      else if (e.key === 'ArrowRight') step(-1);
+      if (event.key === 'Escape') { event.preventDefault(); close(); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); step(1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); step(-1); }
+      if (event.key === 'Tab') {
+        var controls = [closeButton, previous, next].filter(function (button) { return !button.disabled; });
+        var current = controls.indexOf(document.activeElement), nextIndex = (current + (event.shiftKey ? -1 : 1) + controls.length) % controls.length;
+        event.preventDefault(); controls[nextIndex].focus();
+      }
     });
-    var x0 = null;
-    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', function (e) {
-      if (x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0;
-      x0 = null;
-      if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
-    });
+    var x = null;
+    lb.addEventListener('touchstart', function (event) { if (event.touches.length === 1) x = event.touches[0].clientX; else x = null; }, { passive: true });
+    lb.addEventListener('touchend', function (event) { if (x === null) return; var delta = event.changedTouches[0].clientX - x; x = null; if (Math.abs(delta) > 50) step(delta < 0 ? 1 : -1); }, { passive: true });
   }
-
-  function bindHosts() {
-    hosts.forEach(function (h) {
-      h.addEventListener('click', function (e) {
-        var b = e.target.closest('.gx-open');
-        if (b) {
-          e.stopPropagation();
-          var a = +b.getAttribute('data-a');
-          if (lb && albums[a]) open(a, +b.getAttribute('data-p'));
-          return;
-        }
-        if (e.target.closest('.gx-card')) e.stopPropagation();
-      });
-      h.addEventListener('keydown', function (e) {
-        if ((e.key === 'Enter' || e.key === ' ') && e.target.closest('.gx-open,.gx-card')) e.stopPropagation();
-      });
+  hosts.forEach(function (host) {
+    host.setAttribute('aria-busy', 'true');
+    host.addEventListener('click', function (event) {
+      var photo = event.target.closest('[data-gx-photo]');
+      if (photo) { event.preventDefault(); open(Number(photo.getAttribute('data-gx-photo'))); return; }
+      var page = event.target.closest('[data-gx-page]');
+      if (page && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey && event.button === 0) { event.preventDefault(); navigate(page.href); }
+      if (event.target.closest('[data-gx-retry]')) load();
     });
-  }
-
-  setupLightbox();
-  bindHosts();
-
-  fetch('/content/gallery.json', { cache: 'no-cache' })
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (data) {
+    host.addEventListener('submit', function (event) {
+      if (!event.target.matches('.gx-search')) return;
+      event.preventDefault(); var target = new URL(location.href), query = new FormData(event.target).get('q').trim();
+      if (query) target.searchParams.set('q', query); else target.searchParams.delete('q'); target.searchParams.delete('page');
+      navigate(target.pathname + target.search);
+    });
+    host.addEventListener('error', function (event) { if (event.target.tagName === 'IMG') event.target.hidden = true; }, true);
+  });
+  window.addEventListener('popstate', function () { close(); if (albums.length) render(); });
+  function load() {
+    hosts.forEach(function (host) { host.setAttribute('aria-busy', 'true'); });
+    fetch('/content/gallery.json', { cache: 'no-store' }).then(function (response) { if (!response.ok) throw new Error('Gallery unavailable'); return response.json(); }).then(function (data) {
       albums = normalize(data);
-      if (!albums.length) return;
+      var legacy = /^#album-(\d+)$/.exec(location.hash);
+      if (legacy) { var old = albums.find(function (a) { return a.legacy === Number(legacy[1]); }); if (old) { location.replace(albumUrl(old)); return; } }
       render();
-      guard();
-    })
-    .catch(function () {});
+    }).catch(function () {
+      hosts.forEach(function (host) { host.removeAttribute('aria-busy'); host.innerHTML = empty('گالری دریافت نشد', 'اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.') + '<button class="btn gx-retry" type="button" data-gx-retry>تلاش دوباره</button>'; });
+    });
+  }
+  setupLightbox(); load();
 })();
