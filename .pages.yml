@@ -40,6 +40,10 @@ content:
       - name: instagramUrl
         label: Instagram URL
         type: string
+      - name: contactFormUrl
+        label: Contact form HTTPS endpoint
+        type: string
+        description: Verified form service endpoint. Leave empty to keep sending disabled.
       - name: membershipOpen
         label: Membership is open
         type: boolean
@@ -123,6 +127,11 @@ content:
             collapsed: true
             summary: '{fields.title} — {fields.date}'
         fields:
+          - name: id
+            label: Permanent album ID
+            type: string
+            required: true
+            description: Unique English slug, for example camp-design-1405. Keep unchanged after publishing.
           - name: title
             label: Event name
             type: string
@@ -218,7 +227,8 @@ content:
           - name: admission
             label: Admission
             type: select
-            options: [free, paid]
+            options:
+              values: [free, paid]
           - name: price
             label: Price
             type: string
@@ -245,9 +255,6 @@ content:
         type: text
       - name: actionLabel
         label: Action label
-        type: string
-      - name: actionUrl
-        label: Action URL
         type: string
       - name: brand
         label: Brand
