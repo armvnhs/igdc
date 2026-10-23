@@ -27,12 +27,6 @@
       "instagram": "https://www.instagram.com/bahar.gandomkar/"
     },
     {
-      "name": "آتنا مکارمی",
-      "role": "CRM",
-      "image": "/assets/img/Members/اتنا-مکارمی.webp",
-      "instagram": "https://www.instagram.com/athenamakaremi/"
-    },
-    {
       "name": "امیر سالار اسپیطالی",
       "role": "R&D",
       "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
@@ -43,6 +37,12 @@
       "role": "R&D",
       "image": "/assets/img/Members/ارس-حسینی.webp",
       "instagram": "https://www.instagram.com/arass_hosseini/"
+    },
+    {
+      "name": "آتنا مکارمی",
+      "role": "CRM",
+      "image": "/assets/img/Members/اتنا-مکارمی.webp",
+      "instagram": "https://www.instagram.com/athenamakaremi/"
     },
     {
       "name": "پرنیا ایروانی",
