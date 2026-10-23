@@ -56,6 +56,12 @@
       "instagram": "https://www.instagram.com/imatefehzamani/"
     },
     {
+      "name": "مهلا امینی",
+      "role": "Marketing",
+      "image": "/assets/img/Members/مهلا-امینی.webp",
+      "instagram": "https://www.instagram.com/mahla_aminii_/"
+    },
+    {
       "name": "پرنیا ایروانی",
       "role": "CRM",
       "image": "/assets/img/Members/پرنیا-ایروانی.webp",
@@ -108,12 +114,6 @@
       "role": "R&D",
       "image": "/assets/img/Members/مبینا-مردانی.webp",
       "instagram": "https://www.instagram.com/mobinamardany/"
-    },
-    {
-      "name": "مهلا امینی",
-      "role": "Marketing",
-      "image": "/assets/img/Members/مهلا-امینی.webp",
-      "instagram": "https://www.instagram.com/mahla_aminii_/"
     }
   ]
 }
