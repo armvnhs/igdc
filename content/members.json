@@ -33,6 +33,12 @@
       "instagram": "https://www.instagram.com/setayesh_rocky/"
     },
     {
+      "name": "عاطفه زمانی",
+      "role": "Marketing",
+      "image": "/assets/img/Members/عاطفه-زمانی.webp",
+      "instagram": "https://www.instagram.com/imatefehzamani/"
+    },
+    {
       "name": "امیر سالار اسپیطالی",
       "role": "R&D",
       "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
@@ -73,12 +79,6 @@
       "role": "HR",
       "image": "/assets/img/Members/سارا-قنبری.webp",
       "instagram": "https://www.instagram.com/coolsarah._/"
-    },
-    {
-      "name": "عاطفه زمانی",
-      "role": "Marketing",
-      "image": "/assets/img/Members/عاطفه-زمانی.webp",
-      "instagram": "https://www.instagram.com/imatefehzamani/"
     }
   ]
 }
