@@ -74,6 +74,12 @@
       "instagram": "https://www.instagram.com/mobina_b.85/"
     },
     {
+      "name": "مبینا شیاری",
+      "role": "CRM",
+      "image": "/assets/img/Members/مبینا-شیاری.webp",
+      "instagram": "https://www.instagram.com/mobina.shiarii/"
+    },
+    {
       "name": "سارا امینی",
       "role": "HR",
       "image": "/assets/img/Members/سارا-امینی.webp",
@@ -96,12 +102,6 @@
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
-    },
-    {
-      "name": "مبینا شیاری",
-      "role": "CRM",
-      "image": "/assets/img/Members/مبینا-شیاری.webp",
-      "instagram": "https://www.instagram.com/mobina.shiarii/"
     }
   ]
 }
