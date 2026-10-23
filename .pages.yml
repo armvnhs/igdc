@@ -132,22 +132,13 @@ content:
             summary: '{fields.title}'
         fields:
           - name: desktopImage
-            label: Desktop image
+            label: Desktop image (1920 × 800 px recommended)
             type: image
           - name: mobileImage
-            label: Mobile image
+            label: Mobile image (1080 × 1080 px recommended)
             type: image
           - name: title
-            label: Slide title
-            type: string
-          - name: description
-            label: Slide description
-            type: text
-          - name: url
-            label: Button URL
-            type: string
-          - name: buttonLabel
-            label: Button label
+            label: Image description (accessibility only)
             type: string
   - name: gallery
     label: Gallery
