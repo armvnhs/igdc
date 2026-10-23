@@ -3,7 +3,16 @@
     {
       "title": "کمپ دیزاین",
       "date": "مهر ماه ۱۴۰۴",
-      "description": "اولین کمپِ دیزاین\nبا محوریت طراحی پوستر به روش چیدمان اشیا ( مدلسازی )"
+      "description": "اولین کمپِ دیزاین\nبا محوریت طراحی پوستر به روش چیدمان اشیا ( مدلسازی )",
+      "cover": "/assets/img/Gallery/Camp-Design/Camo-Design (1).webp",
+      "photos": [
+        "/assets/img/Gallery/Camp-Design/Camo-Design (2).webp",
+        "/assets/img/Gallery/Camp-Design/Camo-Design (3).webp",
+        "/assets/img/Gallery/Camp-Design/Camo-Design (4).webp",
+        "/assets/img/Gallery/Camp-Design/Camo-Design (5).webp",
+        "/assets/img/Gallery/Camp-Design/Camo-Design (6).webp",
+        "/assets/img/Gallery/Camp-Design/Camo-Design (7).webp"
+      ]
     }
   ]
 }
