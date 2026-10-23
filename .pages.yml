@@ -72,6 +72,42 @@ content:
           - name: label
             label: Label
             type: string
+  - name: about
+    label: About the club
+    type: file
+    path: content/about.json
+    format: json
+    fields:
+      - name: title
+        label: Club name
+        type: string
+        required: true
+      - name: englishName
+        label: English name
+        type: string
+      - name: acronym
+        label: Acronym
+        type: string
+      - name: founded
+        label: Foundation date (Persian)
+        type: string
+      - name: founders
+        label: Founders
+        type: string
+      - name: introduction
+        label: Introduction
+        type: text
+        description: Separate paragraphs with a blank line.
+      - name: history
+        label: History
+        type: text
+      - name: collaborationIntroduction
+        label: Collaboration introduction
+        type: text
+      - name: partners
+        label: Organizations that supported some events
+        type: string
+        list: true
   - name: banner
     label: Hero slider
     type: file
