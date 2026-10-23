@@ -8,6 +8,23 @@
       "telegram": "https://t.me/aminnshahi"
     },
     {
+      "name": "امیر سالار اسپیطالی",
+      "role": "R&D",
+      "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
+      "instagram": "https://www.instagram.com/amirsalarespitali/"
+    },
+    {
+      "name": "ارس حسینی",
+      "role": "R&D",
+      "image": "/assets/img/Members/ارس-حسینی.webp",
+      "instagram": "https://www.instagram.com/arass_hosseini/"
+    },
+    {
+      "name": "فائزه ابراهیمیان",
+      "role": "R&D",
+      "image": "/assets/img/Members/فائزه-ابراهیمیان.webp"
+    },
+    {
       "name": "آرمان حق شناس",
       "role": "Marketing",
       "image": "/assets/img/Members/آرمان-حق-شناس.webp",
@@ -39,21 +56,10 @@
       "instagram": "https://www.instagram.com/imatefehzamani/"
     },
     {
-      "name": "امیر سالار اسپیطالی",
-      "role": "R&D",
-      "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
-      "instagram": "https://www.instagram.com/amirsalarespitali/"
-    },
-    {
-      "name": "ارس حسینی",
-      "role": "R&D",
-      "image": "/assets/img/Members/ارس-حسینی.webp",
-      "instagram": "https://www.instagram.com/arass_hosseini/"
-    },
-    {
-      "name": "فائزه ابراهیمیان",
-      "role": "R&D",
-      "image": "/assets/img/Members/فائزه-ابراهیمیان.webp"
+      "name": "پرنیا ایروانی",
+      "role": "CRM",
+      "image": "/assets/img/Members/پرنیا-ایروانی.webp",
+      "instagram": "https://www.instagram.com/parniairavaniy/"
     },
     {
       "name": "آتنا مکارمی",
@@ -62,16 +68,10 @@
       "instagram": "https://www.instagram.com/athenamakaremi/"
     },
     {
-      "name": "پرنیا ایروانی",
+      "name": "مبینا بابائی",
       "role": "CRM",
-      "image": "/assets/img/Members/پرنیا-ایروانی.webp",
-      "instagram": "https://www.instagram.com/parniairavaniy/"
-    },
-    {
-      "name": "حسین جعفری",
-      "role": "D&E",
-      "image": "/assets/img/Members/حسین-جعفری.webp",
-      "instagram": "https://www.instagram.com/mrbaladir/"
+      "image": "/assets/img/Members/مبینا-بابایی.webp",
+      "instagram": "https://www.instagram.com/mobina_b.85/"
     },
     {
       "name": "سارا امینی",
@@ -86,16 +86,16 @@
       "instagram": "https://www.instagram.com/coolsarah._/"
     },
     {
+      "name": "حسین جعفری",
+      "role": "D&E",
+      "image": "/assets/img/Members/حسین-جعفری.webp",
+      "instagram": "https://www.instagram.com/mrbaladir/"
+    },
+    {
       "name": "علی ملک زاده",
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
-    },
-    {
-      "name": "مبینا بابائی",
-      "role": "CRM",
-      "image": "/assets/img/Members/مبینا-بابایی.webp",
-      "instagram": "https://www.instagram.com/mobina_b.85/"
     }
   ]
 }
