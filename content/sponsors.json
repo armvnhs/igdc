@@ -4,8 +4,18 @@
   "items": [
     {
       "name": "چاپ حافظ",
-      "logo": "/assets/img/images.png",
-      "url": "https://hafez-print.org/"
+      "logo": "/assets/img/Sponsor/چاپ حافظ.webp",
+      "url": "https://www.instagram.com/print.hafez/"
+    },
+    {
+      "name": "اتاق بازرگانی اصفهان",
+      "logo": "/assets/img/Sponsor/اتاق بازرگانی.webp",
+      "url": "https://eccim.com/"
+    },
+    {
+      "name": "انجمن چاپ و بسته بندی استان اصفهان",
+      "logo": "/assets/img/Sponsor/انجمن چاپ و بسته بندی.webp",
+      "url": "https://pripacks.com/"
     }
   ]
 }
