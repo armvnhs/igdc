@@ -4,8 +4,8 @@
   "autoplaySeconds": 2,
   "items": [
     {
-      "desktopImage": "/assets/img/Sliders/Ma-Hanooz-des.webp",
-      "mobileImage": "/assets/img/Sliders/Ma-Hanooz-mob.webp",
+      "desktopImage": "/assets/img/Sliders/Ma-Hanooz-des.png",
+      "mobileImage": "/assets/img/Sliders/Ma-Hanooz-mob.png",
       "url": "https://zaya.io/igdcisf",
       "buttonLabel": "تکمیل پرسشنامه"
     }
