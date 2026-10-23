@@ -40,8 +40,9 @@
     },
     {
       "name": "بهار گندم کار",
-      "role": "mARKETING",
-      "image": "/assets/img/Members/بهار-گندم-کار.webp"
+      "role": "Marketing",
+      "image": "/assets/img/Members/بهار-گندم-کار.webp",
+      "instagram": "https://www.instagram.com/bahar.gandomkar/"
     }
   ]
 }
