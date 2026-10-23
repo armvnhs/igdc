@@ -167,8 +167,8 @@ content:
           - name: instagram
             label: Instagram URL
             type: string
-          - name: telegram
-            label: Telegram URL
+          - name: linkedin
+            label: Linkedin URL
             type: string
   - name: events
     label: Events
