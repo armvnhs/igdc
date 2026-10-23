@@ -5,8 +5,7 @@
   "items": [
     {
       "desktopImage": "/assets/img/Sliders/MHHN-DESK.png",
-      "mobileImage": "/assets/img/Sliders/MHHN-MB.png",
-      "title": "ما هنوز، همو نمی‌شناسیم!"
+      "mobileImage": "/assets/img/Sliders/MHHN-MB.png"
     }
   ]
 }
