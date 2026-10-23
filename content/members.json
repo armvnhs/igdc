@@ -105,7 +105,9 @@
     },
     {
       "name": "مبینا مردانی",
-      "image": "/assets/img/Members/مبینا-مردانی.webp"
+      "role": "R&D",
+      "image": "/assets/img/Members/مبینا-مردانی.webp",
+      "instagram": "https://www.instagram.com/mobinamardany/"
     }
   ]
 }
