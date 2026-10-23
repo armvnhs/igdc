@@ -22,6 +22,22 @@
         "/assets/img/Gallery/Camp-Design/Camo-Design (15).webp",
         "/assets/img/Gallery/Camp-Design/Camo-Design (16).webp"
       ]
+    },
+    {
+      "title": "رویداد پک دیزاین",
+      "date": "مرداد ۱۴۰۴",
+      "description": "پک دیزاین ، سلسله نشست های تخصصی درباب چاپ و بسته بندی ",
+      "cover": "/assets/img/Gallery/Pack Design/Pack Design 01.jpg",
+      "photos": [
+        "/assets/img/Gallery/Pack Design/Pack Design 03.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 04.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 05.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 06.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 07.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 08.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 09.jpg",
+        "/assets/img/Gallery/Pack Design/Pack Design 10.jpg"
+      ]
     }
   ]
 }
