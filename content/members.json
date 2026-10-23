@@ -2,49 +2,9 @@
   "items": [
     {
       "name": "امین شاهی",
-      "role": "مدیر باشگاه",
-      "image": "/assets/img/photo_2025-01-12_22-43-17.jpg"
-    },
-    {
-      "name": "آرمان حق شناس",
-      "role": "گرافیک دیزاینر",
-      "image": "/assets/img/IMG_20260828_165556.png",
-      "instagram": "https://www.instagram.com/armvnhs",
-      "telegram": "https://t.me/armvnhs"
-    },
-    {
-      "name": "بهار گندم کار",
-      "role": "مدیر بازاریابی",
-      "image": "/assets/img/IMG_5455.png"
-    },
-    {
-      "name": "آیدا طالبی",
-      "role": "مدیر محتوا",
-      "image": "/assets/img/photo_2026-10-18_21-05-43.jpg"
-    },
-    {
-      "name": "نام عضو پنجم",
-      "role": "عضو باشگاه"
-    },
-    {
-      "name": "نام عضو ششم",
-      "role": "عضو باشگاه"
-    },
-    {
-      "name": "نام عضو هفتم",
-      "role": "عضو باشگاه"
-    },
-    {
-      "name": "نام عضو هشتم",
-      "role": "عضو باشگاه"
-    },
-    {
-      "name": "نام عضو نهم",
-      "role": "عضو باشگاه"
-    },
-    {
-      "name": "نام عضو دهم",
-      "role": "عضو باشگاه"
+      "role": "CEO",
+      "image": "/assets/img/Members/امین-شاهی.webp",
+      "instagram": "https://www.instagram.com/aminshahicom/"
     }
   ]
 }
