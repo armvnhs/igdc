@@ -8,23 +8,6 @@
       "telegram": "https://t.me/aminnshahi"
     },
     {
-      "name": "امیر سالار اسپیطالی",
-      "role": "R&D",
-      "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
-      "instagram": "https://www.instagram.com/amirsalarespitali/"
-    },
-    {
-      "name": "ارس حسینی",
-      "role": "R&D",
-      "image": "/assets/img/Members/ارس-حسینی.webp",
-      "instagram": "https://www.instagram.com/arass_hosseini/"
-    },
-    {
-      "name": "فائزه ابراهیمیان",
-      "role": "R&D",
-      "image": "/assets/img/Members/فائزه-ابراهیمیان.webp"
-    },
-    {
       "name": "آرمان حق شناس",
       "role": "Marketing",
       "image": "/assets/img/Members/آرمان-حق-شناس.webp",
@@ -60,6 +43,35 @@
       "role": "Marketing",
       "image": "/assets/img/Members/مهلا-امینی.webp",
       "instagram": "https://www.instagram.com/mahla_aminii_/"
+    },
+    {
+      "name": "امیر سالار اسپیطالی",
+      "role": "R&D",
+      "image": "/assets/img/Members/امیر-سالار-اسپیطالی.webp",
+      "instagram": "https://www.instagram.com/amirsalarespitali/"
+    },
+    {
+      "name": "فائزه ابراهیمیان",
+      "role": "R&D",
+      "image": "/assets/img/Members/فائزه-ابراهیمیان.webp"
+    },
+    {
+      "name": "ارس حسینی",
+      "role": "R&D",
+      "image": "/assets/img/Members/ارس-حسینی.webp",
+      "instagram": "https://www.instagram.com/arass_hosseini/"
+    },
+    {
+      "name": "هانی حسینی",
+      "role": "R&D",
+      "image": "/assets/img/Members/هانی-حسینی.webp",
+      "instagram": "https://www.instagram.com/hani_hosseini1/"
+    },
+    {
+      "name": "مبینا مردانی",
+      "role": "R&D",
+      "image": "/assets/img/Members/مبینا-مردانی.webp",
+      "instagram": "https://www.instagram.com/mobinamardany/"
     },
     {
       "name": "پرنیا ایروانی",
@@ -108,18 +120,6 @@
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
-    },
-    {
-      "name": "مبینا مردانی",
-      "role": "R&D",
-      "image": "/assets/img/Members/مبینا-مردانی.webp",
-      "instagram": "https://www.instagram.com/mobinamardany/"
-    },
-    {
-      "name": "هانی حسینی",
-      "role": "R&D",
-      "image": "/assets/img/Members/هانی-حسینی.webp",
-      "instagram": "https://www.instagram.com/hani_hosseini1/"
     }
   ]
 }
