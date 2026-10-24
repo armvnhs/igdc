@@ -1,11 +1,13 @@
 {
-  "enabled": false,
+  "enabled": true,
   "autoplay": true,
   "autoplaySeconds": 2,
   "items": [
     {
       "desktopImage": "/assets/img/Sliders/MHHN-DESK.png",
-      "mobileImage": "/assets/img/Sliders/MHHN-MB.png"
+      "mobileImage": "/assets/img/Sliders/MHHN-MB.png",
+      "title": "ماهنوز همو نمی‌شناسیم",
+      "url": "https://zaya.io/igdcisf"
     }
   ]
 }
