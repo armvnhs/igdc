@@ -138,8 +138,13 @@ content:
             label: Mobile image (1080 × 1080 px recommended)
             type: image
           - name: title
-            label: Image description (accessibility only)
+            label: نام بنر
             type: string
+            required: true
+          - name: url
+            label: لینک مقصد بنر
+            type: string
+            description: اختیاری؛ با کلیک روی تمام تصویر این آدرس باز می‌شود.
   - name: gallery
     label: Gallery
     type: file
