@@ -101,6 +101,8 @@ button.footer-cta{border:0;text-align:right}
 .feature-stage.has-banner::after{display:none}
 .feature-stage.has-banner .feature-slide{display:none;position:relative;inset:auto;min-width:0;opacity:0;visibility:hidden}
 .feature-stage.has-banner .feature-slide.active{display:block;opacity:1;visibility:visible}
+.feature-stage.has-banner .feature-banner-link{display:block;width:100%;line-height:0;border-radius:inherit}
+.feature-stage.has-banner .feature-banner-link:focus-visible{outline:3px solid var(--accent);outline-offset:-5px}
 .feature-stage.has-banner .feature-picture{position:static;inset:auto;display:block;width:100%;height:auto;background:transparent}
 .feature-stage.has-banner .feature-picture .feature-image{position:static;inset:auto;display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:0}
 .feature-stage.has-banner .feature-copy,.feature-stage.has-banner .feature-shade,.feature-stage.has-banner .feature-controls{display:none}

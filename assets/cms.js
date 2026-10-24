@@ -39,11 +39,11 @@ function applyBanner(data){
     var desktop=safeUrl(item.desktopImage),mobile=safeUrl(item.mobileImage)||desktop;
     if(mobile){var source=node('source');source.media='(max-width: 700px)';source.srcset=mobile;picture.append(source)}
     var img=image(desktop?item.desktopImage:item.mobileImage,item.title||'بنر باشگاه','feature-image');
-    if(img){img.loading=index?'lazy':'eager';picture.append(img);slide.append(picture);slides.push(slide)}
+    if(img){img.loading=index?'lazy':'eager';picture.append(img);var destination=safeUrl(item.url);if(destination){var link=node('a','feature-banner-link');link.href=destination;link.append(picture);slide.append(link)}else slide.append(picture);slides.push(slide)}
   });
   stage.replaceChildren.apply(stage,slides);var index=0,timer;
   function go(next){index=(next+slides.length)%slides.length;slides.forEach(function(slide,i){slide.classList.toggle('active',i===index);slide.setAttribute('aria-hidden',String(i!==index))});if(timer)clearTimeout(timer);if(data.autoplay!==false&&slides.length>1&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setTimeout(function(){go(index+1)},Math.max(3,Number(data.autoplaySeconds)||7)*1000)}
-  go(0);stage.addEventListener('mouseenter',function(){if(timer)clearTimeout(timer)});stage.addEventListener('mouseleave',function(){if(data.autoplay!==false&&slides.length>1)go(index)});
+  go(0);stage.addEventListener('mouseenter',function(){if(timer)clearTimeout(timer)});stage.addEventListener('mouseleave',function(){if(data.autoplay!==false&&slides.length>1)go(index)});stage.addEventListener('focusin',function(){if(timer)clearTimeout(timer)});stage.addEventListener('focusout',function(){if(data.autoplay!==false&&slides.length>1)go(index)});
 }
 function applyAbout(data){
   if(!data||typeof data!=='object')throw new Error('Invalid about content');
