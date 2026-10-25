@@ -4,13 +4,13 @@
       "id": "branding",
       "title": "دیزاین آزاد",
       "image": "/assets/img/images.jpg",
-      "category": "ورکشاپ",
+      "category": "رویداد",
       "day": "۲",
       "month": "مرداد",
       "year": "۱۴۰۵",
       "time": "۱۶",
       "location": "اصفهان",
-      "description": "نقد هویت بصری شما",
+      "description": "جایی برای تعامل و یادگیری در دنیای گرافیک دیزاین \nدنبال طراحی یک تجربه احساسی هستیم\nما دیده شدیم ما آدم های شبیه خودمون رو  پیدا کردیم\nو در کنار این ها در یک فضای ازاد با ایده ها اشنا خواهیم شد",
       "admission": "free",
       "registration": false,
       "registrationUrl": "https://igdc.ir/"
@@ -25,7 +25,7 @@
       "year": "۱۴۰۵",
       "time": "۱۶ تا ۲۰",
       "location": "اصفهان",
-      "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
+      "description": "با سخنرانی: رضا عابدینی\nنشست تخصصی با : \nاحمدرضا میرمقتدایی \nرسول کمالی دولت آبادی  \nنیما پیراسته ",
       "admission": "free",
       "registration": false
     }
