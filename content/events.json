@@ -5,30 +5,29 @@
       "title": "دیزاین آزاد",
       "image": "/assets/img/images.jpg",
       "category": "ورکشاپ",
-      "day": "۲۸",
-      "month": "آبان",
+      "day": "۲",
+      "month": "مرداد",
       "year": "۱۴۰۵",
-      "time": "۱۰ تا ۱۷",
+      "time": "۱۶",
       "location": "اصفهان",
       "description": "نقد هویت بصری شما",
       "admission": "free",
-      "registration": true,
-      "registrationUrl": "https://igdc.ir/#events"
+      "registration": false,
+      "registrationUrl": "https://igdc.ir/"
     },
     {
       "id": "poster",
       "title": "نمایشگاه پوستر",
       "image": "/assets/img/images (1).jpg",
       "category": "نمایشگاه",
-      "day": "۱۲",
+      "day": "۱۳",
       "month": "آذر",
       "year": "۱۴۰۵",
-      "time": "۱۶ تا ۲۱",
+      "time": "۱۶ تا ۲۰",
       "location": "اصفهان",
       "description": "آثار منتخب اعضا و گفت‌وگو با طراحان دربارهٔ روند خلق هر پوستر",
-      "admission": "paid",
-      "price": "120 هزار تومن",
-      "registration": true
+      "admission": "free",
+      "registration": false
     }
   ]
 }
