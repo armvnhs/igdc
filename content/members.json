@@ -141,16 +141,16 @@
       "instagram": "https://www.instagram.com/coolsarah._/"
     },
     {
-      "name": "حسین جعفری",
-      "role": "D&E",
-      "image": "/assets/img/Members/حسین-جعفری.webp",
-      "instagram": "https://www.instagram.com/mrbaladir/"
-    },
-    {
       "name": "علی ملک زاده",
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
+    },
+    {
+      "name": "حسین جعفری",
+      "role": "D&E",
+      "image": "/assets/img/Members/حسین-جعفری.webp",
+      "instagram": "https://www.instagram.com/mrbaladir/"
     }
   ]
 }
