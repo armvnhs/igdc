@@ -87,6 +87,12 @@
       "instagram": "https://www.instagram.com/mobinamardany/"
     },
     {
+      "name": "مسیح اشفاق",
+      "role": "CRM",
+      "image": "/assets/img/Members/مسیح-اشفاق.webp",
+      "instagram": "https://www.instagram.com/masih.eshfagh/"
+    },
+    {
       "name": "پرنیا ایروانی",
       "role": "CRM",
       "image": "/assets/img/Members/پرنیا-ایروانی.webp",
@@ -133,12 +139,6 @@
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
-    },
-    {
-      "name": "مسیح اشفاق",
-      "role": "CRM",
-      "image": "/assets/img/Members/مسیح-اشفاق.webp",
-      "instagram": "https://www.instagram.com/masih.eshfagh/"
     }
   ]
 }
