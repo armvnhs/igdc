@@ -14,6 +14,12 @@
       "telegram": "https://t.me/aminnshahi"
     },
     {
+      "name": "هنگامه قربانی",
+      "role": "HR & Project Coordinator",
+      "image": "/assets/img/Members/هنگامه-قربانی.webp",
+      "instagram": "https://www.instagram.com/itshengamm/"
+    },
+    {
       "name": "آرمان حق شناس",
       "role": "Marketing",
       "image": "/assets/img/Members/آرمان-حق-شناس.webp",
@@ -139,12 +145,6 @@
       "role": "D&E",
       "image": "/assets/img/Members/علی-ملک-زاده.webp",
       "instagram": "https://www.instagram.com/ali_malekzadehh1/"
-    },
-    {
-      "name": "هنگامه قربانی",
-      "role": "HR & Project Coordinator",
-      "image": "/assets/img/Members/هنگامه-قربانی.webp",
-      "instagram": "https://www.instagram.com/itshengamm/"
     }
   ]
 }
