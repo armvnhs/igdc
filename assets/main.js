@@ -56,16 +56,20 @@ function settle(img){
 function soften(img){
   if(img.dataset.soft||img.closest(skip))return;
   img.dataset.soft='true';
-  if(reduced)return;
+  if(reduced||(img.complete&&img.naturalWidth))return;
+  var started=performance.now();
   img.classList.add('soft');
   var wrap=img.parentElement;
   if(wrap){
     var position=getComputedStyle(wrap).position;
     if(position!=='static'&&position!=='fixed')wrap.classList.add('soft-wrap')
   }
-  if(img.complete&&img.naturalWidth){requestAnimationFrame(function(){settle(img)});return}
-  img.addEventListener('load',function(){settle(img)},{once:true});
-  img.addEventListener('error',function(){settle(img)},{once:true});
+  function done(){
+    if(performance.now()-started<140)img.classList.add('is-instant');
+    settle(img)
+  }
+  img.addEventListener('load',done,{once:true});
+  img.addEventListener('error',done,{once:true});
   setTimeout(function(){settle(img)},9000)
 }
 function scan(root){(root||document).querySelectorAll('img').forEach(soften)}
