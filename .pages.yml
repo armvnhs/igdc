@@ -211,6 +211,9 @@ content:
           - name: telegram
             label: Telegram URL
             type: string
+          - name: linkedin
+            label: LinkedIn URL
+            type: string
   - name: events
     label: Events
     type: file
