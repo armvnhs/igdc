@@ -44,5 +44,65 @@ function endpoint(value){try{var url=new URL(value);return url.protocol==='https
 if(form)form.addEventListener('submit',async function(event){event.preventDefault();if(form.dataset.sending==='true')return;if(!form.checkValidity()){form.reportValidity();return}var url=endpoint(form.dataset.endpoint);if(!url){formStatus.textContent='ارسال فرم هنوز فعال نشده؛ لطفاً از تلگرام با ما در تماس باشید.';return}var data=new FormData(form);if(data.get('_gotcha'))return;var phone=String(data.get('phone')||'').replace(/[۰-۹]/g,function(c){return String(c.charCodeAt(0)-1776)}).replace(/[٠-٩]/g,function(c){return String(c.charCodeAt(0)-1632)}).replace(/[\s()-]/g,'');if(!/^\+?[0-9]{8,15}$/.test(phone)){formStatus.textContent='شماره موبایل را کامل وارد کنید.';document.getElementById('fphone').focus();return}data.set('phone',phone);data.set('_subject','پیام از باشگاه طراحان گرافیک اصفهان — '+data.get('subject'));var button=form.querySelector('[type="submit"]');form.dataset.sending='true';button.disabled=true;button.textContent='در حال ارسال…';formStatus.textContent='';var controller=new AbortController(),timeout=setTimeout(function(){controller.abort()},15000);try{var response=await fetch(url,{method:'POST',body:data,headers:{Accept:'application/json'},signal:controller.signal});if(!response.ok)throw new Error('Submission rejected');formStatus.textContent='پیام شما دریافت شد. ممنون که برای ما نوشتید.';form.reset()}catch(error){formStatus.textContent='ارسال انجام نشد. دوباره تلاش کنید یا در تلگرام پیام بدهید.'}finally{clearTimeout(timeout);form.dataset.sending='false';button.disabled=false;button.innerHTML='ارسال پیام <svg class="i" aria-hidden="true"><use href="#chev"/></svg>'}});
 })();
 
-/* Reveal content progressively; reduced motion and keyboard use remain supported. */
-(function(){var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced||!('IntersectionObserver' in window))return;var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.08});function watch(){document.querySelectorAll('.section-heading,.stat,.ev,.tile,.about-copy,.val,.contact-copy,.cform,.footer-top,.footer-columns').forEach(function(el,i){if(el.dataset.revealBound)return;el.dataset.revealBound='true';el.style.setProperty('--reveal-delay',(i%3)*65+'ms');el.classList.add('reveal-ready');observer.observe(el)})}watch();document.addEventListener('igdc:content',watch)})();
+/* Soft image loading and staged reveal. */
+(function(){
+var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var skip='header,dialog,#lb,.brand-mark,.footer-identity,.gx-viewer,[data-no-soft]';
+function settle(img){
+  img.classList.add('is-loaded');
+  var wrap=img.parentElement;
+  if(wrap)wrap.classList.add('soft-done');
+}
+function soften(img){
+  if(img.dataset.soft||img.closest(skip))return;
+  img.dataset.soft='true';
+  if(reduced)return;
+  img.classList.add('soft');
+  var wrap=img.parentElement;
+  if(wrap){
+    var position=getComputedStyle(wrap).position;
+    if(position!=='static'&&position!=='fixed')wrap.classList.add('soft-wrap')
+  }
+  if(img.complete&&img.naturalWidth){requestAnimationFrame(function(){settle(img)});return}
+  img.addEventListener('load',function(){settle(img)},{once:true});
+  img.addEventListener('error',function(){settle(img)},{once:true});
+  setTimeout(function(){settle(img)},9000)
+}
+function scan(root){(root||document).querySelectorAll('img').forEach(soften)}
+scan();
+if('MutationObserver' in window&&!reduced){
+  new MutationObserver(function(list){
+    list.forEach(function(record){
+      record.addedNodes.forEach(function(added){
+        if(added.nodeType!==1)return;
+        if(added.tagName==='IMG')soften(added);else scan(added)
+      })
+    })
+  }).observe(document.documentElement,{childList:true,subtree:true})
+}
+if(reduced||!('IntersectionObserver' in window))return;
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(!entry.isIntersecting)return;
+    var el=entry.target;
+    el.classList.add('is-visible');
+    observer.unobserve(el);
+    var wait=(parseInt(el.style.getPropertyValue('--reveal-delay'),10)||0)+1100;
+    setTimeout(function(){el.classList.remove('reveal-ready','is-visible');el.style.removeProperty('--reveal-delay')},wait)
+  })
+},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+var targets='.section-heading,.stat,.ev,.tile,.about-copy,.val,.contact-copy,.cform,.footer-top,.footer-columns,.mem,.gx-album-link,.gx-photo-button,.gx-toolbar,.gx-album-heading,.sponsors-head,.sponsor-rail';
+function watch(){
+  document.querySelectorAll(targets).forEach(function(el){
+    if(el.dataset.revealBound)return;
+    el.dataset.revealBound='true';
+    var index=Array.prototype.indexOf.call(el.parentElement?el.parentElement.children:[],el);
+    el.style.setProperty('--reveal-delay',(Math.max(0,index)%4)*90+'ms');
+    el.classList.add('reveal-ready');
+    observer.observe(el)
+  })
+}
+watch();
+document.addEventListener('igdc:content',watch);
+if('MutationObserver' in window)new MutationObserver(function(){watch()}).observe(document.body,{childList:true,subtree:true})
+})();
